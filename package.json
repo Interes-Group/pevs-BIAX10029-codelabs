@@ -8,7 +8,7 @@
   "scripts": {
     "gulp": "gulp",
     "serve": "gulp serve --codelabs-dir codelabs/",
-    "dist": "gulp dist --codelabs-dir codelabs/",
+    "dist": "gulp dist --codelabs-dir codelabs/ --baseUrl https://interes-group.github.io/pevs-BIAX10029-codelabs",
     "claat": "gulp codelabs:export --codelabs-dir codelabs/ --source codelabs/",
     "full:dist": "npm run claat && npm run dist"
   },

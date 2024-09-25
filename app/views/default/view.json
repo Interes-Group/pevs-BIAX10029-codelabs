@@ -6,7 +6,7 @@
   "exclude": [
     "^lang-.*"
   ],
-  "logoUrl": "/images/pevs-logo.png",
+  "logoUrl": "images/pevs-logo.png",
   "toolbarBgColor": "#37474F",
   "sort": "mainCategory",
   "pins": []

@@ -411,7 +411,7 @@ const parseViewMetadata = (filepath) => {
   }
 
   if (fs.existsSync(path.resolve(dirname, 'style.css'))) {
-    meta.customStyle = `/${meta.id}/style.css`;
+    meta.customStyle = `${meta.id}/style.css`;
   }
 
   const defMeta = defaultViewMetadata();

@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-09-25T23:55:41+02:00",
+  "id": "cvicenie-1",
+  "duration": 0,
+  "title": "Cvičenie 1",
+  "authors": "Milan Mladoniczky",
+  "summary": "Cvičenie 1",
+  "source": "cvicenie-1.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "cvicenie"
+  ],
+  "tags": [
+    "beginner"
+  ],
+  "feedback": "https://github.com/interes-group/pevs-zpr-2024-codelabs/issues",
+  "url": "cvicenie-1"
+}
