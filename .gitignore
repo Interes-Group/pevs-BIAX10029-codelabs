@@ -305,6 +305,7 @@ dist
 
 # User defined
 !app/bower_components
+!site/bower_components
 !app/**/*.js
 !app/*.js
 podklady
