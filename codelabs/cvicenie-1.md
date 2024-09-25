@@ -7,6 +7,7 @@ authors: Milan Mladoniczky
 feedback link: https://github.com/interes-group/pevs-zpr-2024-codelabs/issues
 
 # Cvičenie 1
+
 <!-- ------------------------ -->
 ## Úvod
 
@@ -24,6 +25,10 @@ a rozmýšľaním ako vyriešiť predložený problém ako programátor 😉
 > ```shell
 > gcc -std=c11 -o program -Wall -Wextra main.c
 > ```
+
+Pre vypracovanie týchto úloh úplne postačuje použitie online kompilátora jazyku C. Napríklad stránku [OneCompiler for C](https://onecompiler.com/c)
+
+Riešenia na jednotlivé úlohy budú uverejnené nasledujúci deň po cvičení.
 
 <!-- ------------------------ -->
 ## Úloha 1.1
@@ -96,6 +101,47 @@ Skús zapojiť trochu tvorivosti a naformátujte výstup používateľovi v rôz
 <!-- ------------------------ -->
 ## Úloha 1.4
 
+Napíšte program, ktorý prehodí hodnoty medzi dvomi premennými a vypíše ich. 
+Premenné sú typu **int** a ich hodnota je zadaná používateľov po spustení programu.
+
+### Príklady vstupov / výstupov programu
+
+Ak používateľ zadaná hodnotu prvej premennej _5_ a druhej premennej _8_, po zadaní druhej premennej je vypísaný výstup
+po prehodení hodnôte, teda prvá premenná bude mať hodnotu _8_ a druhá premenná hodnotu _5_.
+
+<!-- ------------------------ -->
+## Úloha 1.5
+
+Napíšte program, ktorý vypočíta BMI (Body Mass Index) z dát zadaných používateľom a vypíše ho.
+BMI je vypočítané podľa vzorca:
+
+```text
+BMI = Váha (v kg) / Výška^2 (v metroch)
+```
+
+### Príklady vstupov / výstupov programu
+
+Ak používateľ zadá výšku 1.82m a váhu 72kg výsledné vypočítané BMI je 21.736506.
+
+<!-- ------------------------ -->
+## Úloha 1.6
+
+Napíšte program, ktorý konvertuje teplotu zadanú v stupňoch Celzia na stupne Fahrenheita a vypíše konvertovanú teplotu.
+Vstupná teplota je zadaná používateľom po spustení programu.
+
+Vzorec pre konverziu stupníc teploty vyjadruje vzorec:
+
+```text
+fahrenheit = (celsius * 9/5) + 32
+```
+
+### Príklady vstupov / výstupov programu
+
+Ak používateľa zadá na vstupe teplotu 20.5 °C výsledná teplota bude vypísaná 68.900002 °F
+
+<!-- ------------------------ -->
+## Úloha 1.7
+
 Cyklista si sleduje prejdenú vzdialenosť v kilometroch a čas (v minútach a sekundách), za ktorý
 túto vzdialenosť prešiel. Naprogramujte program, ktorý na základe premenných kilometre, minuty,
 sekundy vypočíta cyklistovu priemernú rýchlosť v km/h (kilometre za hodinu) a vypíše ju na
@@ -107,5 +153,8 @@ Napríklad ak kilometre = 8.5, minuty = 25 a sekundy = 30, potom priemerná rýc
 20.0 km/h.
 
 Ak kilometre = 9.7, minuty = 29 a sekundy = 55, potom priemerná rýchlosť cyklistu bola približne
-19.454 km/h. 
+19.454 km/h.
+
+
+
 
