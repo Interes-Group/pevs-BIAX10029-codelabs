@@ -1,0 +1,13 @@
+{
+  "title": "Codelabs",
+  "description": "Táto stránka slúži na precvičenie programovacieho jazyka C v rámci predmetu Základy programovania, vyučovaného na Paneurópskej vysokej škole v Bratislave. Obsahuje programovacie úlohy a zadania projektov pre riadne precvičenie programovacieho jazyka C.",
+  "tags": [],
+  "categories": [],
+  "exclude": [
+    "^lang-.*"
+  ],
+  "logoUrl": "/images/pevs-logo.png",
+  "toolbarBgColor": "#37474F",
+  "sort": "mainCategory",
+  "pins": []
+}
