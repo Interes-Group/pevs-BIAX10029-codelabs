@@ -20,14 +20,13 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
                   codelab-ga4id=""
                   id="cvicenie-1"
                   title="Cvičenie 1"
                   environment="web"
                   feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
-    
+
       <google-codelab-step label="Úvod" duration="0">
         <p>Na prvom cvičení je cieľom sa oboznámiť s programovacím jazykom, vývojovým prostredím a rozmýšľaním ako vyriešiť predložený problém ako programátor 😉</p>
 <h2 is-upgraded>Obsah</h2>
@@ -46,7 +45,7 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.1" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý realizuje nasledovnú činnosť. Program obsahuje premennú <em>strana_a</em>. Do tejto premennej sa priamo v zdrojovom kóde priradí nejaká hodnota predstavujúca veľkosť strany štvorca. Program najprv vypíše obvod a potom obsah daného štvorca.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
@@ -57,7 +56,7 @@
 int main()
 {
     int strana_a = 5;
-    
+
     printf(&#34;Veľkosť strany štvorca: %d\n&#34;,strana_a);
     printf(&#34;Obvod štvorca: %d\n&#34;, 4*strana_a);
     printf(&#34;Obsah štvorca: %d\n&#34;, strana_a * strana_a);
@@ -67,7 +66,7 @@ int main()
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.2" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý realizuje nasledovnú činnosť. Program obsahuje premenné <em>strana_a</em> a <em>strana_b</em>. Do týchto premenných sa priamo v zdrojovom kóde priradia nejaké číselné hodnoty predstavujúce veľkosti hrán obdĺžnika. Program najprv vypíše obvod a potom obsah daného obdĺžnika.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
@@ -79,7 +78,7 @@ int main()
 {
     int strana_a = 3;
     int strana_b = 8;
-    
+
     printf(&#34;Strany obdĺžníka: a=%d, b=%d\n&#34;,strana_a, strana_b);
     printf(&#34;Obvod obdĺžníka: %d\n&#34;, 2*strana_a + 2*strana_b);
     printf(&#34;Obsah obdĺžníka: %d\n&#34;, strana_a * strana_b);
@@ -89,7 +88,7 @@ int main()
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.3" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý realizuje nasledovnú činnosť. Program obsahuje premennú sekundy. Do tejto premennej sa priamo v zdrojovom kóde priradí číselná hodnota predstavujúca ubehnutý čas v sekundách. Program vypíše, koľko hodín / minút / sekúnd predstavuje hodnota v premennej sekundy.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
@@ -121,13 +120,13 @@ int main()
 int main()
 {
     int sekundy = 10000;
-    
+
     int hodiny, minuty, zvysne_sekundy;
-    
+
     hodiny = sekundy / 3600;
     minuty = (sekundy % 3600) / 60;
     zvysne_sekundy = sekundy % 60;
-    
+
     printf(&#34;Vstupný počet sekúnd: %d\n&#34;,sekundy);
     printf(&#34;hodiny: %d\n&#34;,hodiny);
     printf(&#34;minúty: %d\n&#34;, minuty);
@@ -138,7 +137,7 @@ int main()
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.4" duration="0">
         <p>Napíšte program, ktorý prehodí hodnoty medzi dvomi premennými a vypíše ich. Premenné sú typu <strong>int</strong> a ich hodnota je zadaná používateľov po spustení programu.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
@@ -150,26 +149,26 @@ int main()
 {
     int prva;
     int druha;
-    
+
     printf(&#34;Zadajte prvú hodnotu: &#34;);
     scanf(&#34;%d&#34;,&amp;prva);
-    
+
     printf(&#34;Zadajte druhú hodnotu: &#34;);
     scanf(&#34;%d&#34;,&amp;druha);
-    
+
     int odlozena = prva;
     prva = druha;
     druha = odlozena;
-    
+
     printf(&#34;Prehodené hodnoty sú: prvá=%d, druhá=%d&#34;,prva, druha);
-    
+
     return 0;
 }
 </code></pre>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.5" duration="0">
         <p>Napíšte program, ktorý vypočíta BMI (Body Mass Index) z dát zadaných používateľom a vypíše ho. BMI je vypočítané podľa vzorca:</p>
 <pre><code language="language-text" class="language-text">BMI = Váha (v kg) / Výška^2 (v metroch)
@@ -182,24 +181,24 @@ int main()
 {
     float vaha;
     float vyska;
-    
+
     printf(&#34;Zadajte vašu výšku v metroch: &#34;);
     scanf(&#34;%f&#34;,&amp;vyska);
-    
+
     printf(&#34;Zadajte vašu váhu v kilogramoch: &#34;);
     scanf(&#34;%f&#34;,&amp;vaha);
-    
+
     float bmi = vaha / (vyska * vyska);
-    
+
     printf(&#34;Vaše BMI je %.2f&#34;,bmi);
-    
+
     return 0;
 }
 </code></pre>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.6" duration="0">
         <p>Napíšte program, ktorý konvertuje teplotu zadanú v stupňoch Celzia na stupne Fahrenheita a vypíše konvertovanú teplotu. Vstupná teplota je zadaná používateľom po spustení programu.</p>
 <p>Vzorec pre konverziu stupníc teploty vyjadruje vzorec:</p>
@@ -212,19 +211,19 @@ int main()
 int main()
 {
     float c,f;
-    
+
     printf(&#34;Zadajte teplutu v °C: &#34;);
     scanf(&#34;%f&#34;,&amp;c);
-    
+
     printf(&#34;Teplota vo Fahrenhei stupnici: %.2f°F&#34;,(c * 9/5)+32);
-    
+
     return 0;
 }
 </code></pre>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 1.7" duration="0">
         <p>Cyklista si sleduje prejdenú vzdialenosť v kilometroch a čas (v minútach a sekundách), za ktorý túto vzdialenosť prešiel. Naprogramujte program, ktorý na základe premenných kilometre, minuty, sekundy vypočíta cyklistovu priemernú rýchlosť v km/h (kilometre za hodinu) a vypíše ju na obrazovku. Hodnoty premenných vyžiadajte od používateľa po spustení programu.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
@@ -237,27 +236,27 @@ int main()
 {
     float km;
     int m,s;
-    
+
     printf(&#34;Zadajte prejdenú vzdialenosť v km: &#34;);
     scanf(&#34;%f&#34;,&amp;km);
-    
+
     printf(&#34;Zadajte prejdené minuty: &#34;);
     scanf(&#34;%d&#34;,&amp;m);
-    
+
     printf(&#34;Zadajte prejdené sekundy: &#34;);
     scanf(&#34;%d&#34;,&amp;s);
-    
+
     float celkovy_cas_v_hodinach = (m/60.0)+(s/3600.0);
-    
+
     printf(&#34;Vaša priemerná rýchlosť bola %.2f km/h&#34;, km/celkovy_cas_v_hodinach);
-    
+
     return 0;
 }
 </code></pre>
 
 
       </google-codelab-step>
-    
+
   </google-codelab>
 
   <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
