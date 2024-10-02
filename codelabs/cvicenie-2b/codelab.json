@@ -3,13 +3,13 @@
   "format": "html",
   "prefix": "",
   "mainga": "",
-  "updated": "2024-09-29T14:34:59+02:00",
-  "id": "cvicenie-1",
+  "updated": "2024-10-02T22:47:40+02:00",
+  "id": "cvicenie-2b",
   "duration": 0,
-  "title": "Cvičenie 1",
+  "title": "Cvičenie 2B For-cyklus",
   "authors": "Milan Mladoniczky",
-  "summary": "Cvičenie 1",
-  "source": "cvicenie-1.md",
+  "summary": "Cvičenie 2B For-cyklus",
+  "source": "cvicenie-2-for_loop.md",
   "theme": "",
   "status": [
     "published"
@@ -18,8 +18,9 @@
     "cvicenie"
   ],
   "tags": [
-    "beginner"
+    "beginner",
+    "with-bonus"
   ],
   "feedback": "https://github.com/interes-group/pevs-BIAX10029-codelabs/issues",
-  "url": "cvicenie-1"
+  "url": "cvicenie-2b"
 }

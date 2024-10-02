@@ -28,8 +28,6 @@ a rozmýšľaním ako vyriešiť predložený problém ako programátor 😉
 
 Pre vypracovanie týchto úloh úplne postačuje použitie online kompilátora jazyku C. Napríklad stránku [OneCompiler for C](https://onecompiler.com/c)
 
-Riešenia na jednotlivé úlohy budú uverejnené nasledujúci deň po cvičení.
-
 <!-- ------------------------ -->
 ## Úloha 1.1
 

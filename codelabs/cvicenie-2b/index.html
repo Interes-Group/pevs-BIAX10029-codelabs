@@ -1,0 +1,256 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#4F7DC9">
+    <meta charset="UTF-8">
+    <title>Cvičenie 2B For-cyklus</title>
+    <link rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+    <style>
+        .success {
+            color: #1e8e3e;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<google-codelab codelab-gaid=""
+                codelab-ga4id=""
+                id="cvicenie-2b"
+                title="Cvičenie 2B For-cyklus"
+                environment="web"
+                feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+
+    <google-codelab-step label="Úvod" duration="0">
+        <p>Na tomto cvičení sú úlohy, ktoré majú precvičiť programy s opakovaním použitím tzv. for cyklu.</p>
+        <h2 is-upgraded>Obsah</h2>
+        <ul>
+            <li>použitie výrazu for</li>
+            <li>práca s prerušením cyklu</li>
+            <li>zakomponovanie if-else výrazu a for cyklu</li>
+        </ul>
+        <aside class="warning"><p> Ak používate ako vývojové prostredie lokálny a editor a následnú kompiláciu cez
+            terminál. Použite príkaz:</p>
+            <pre><code language="language-shell" class="language-shell">gcc -std=c11 -o program -Wall -Wextra main.c
+</code></pre>
+        </aside>
+        <p>Pre vypracovanie týchto úloh úplne postačuje použitie online kompilátora jazyku C. Napríklad stránku <a
+                href="https://onecompiler.com/c" target="_blank">OneCompiler for C</a></p>
+        <p>Riešenia na jednotlivé úlohy budú uverejnené najskôr nasledujúci deň po cvičení.</p>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.8" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypíše na obrazovku čísla <em>od 1 po
+            N</em>. Hodnotu <em>N</em> zadaná používateľ cez štandardný vstup.</p>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <p>Pre číslo <strong>10</strong> na vstupe program vypíše postupnosť <strong>1 2 3 4 5 6 7 8 9 10</strong>.</p>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.9" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypíše na obrazovku prvých <em>N</em>
+            párnych čísiel, začínajúc dvojkou. Počet čísiel na vypísanie určuje používateľ zo štandardného vstupu.</p>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <ul>
+            <li>Pre zadanie <strong>N = 1</strong> vypíše program na obrazovku číslo <strong>2</strong>.</li>
+            <li>Pre zadanie <strong>N = 5</strong> vypíše program na obrazovku čísla <strong>2 4 6 8 10</strong>, každé
+                na nový riadok.
+            </li>
+            <li>Pre zadanie <strong>N = 10</strong> vypíše program na obrazovku čísla <strong>2 4 6 8 10 12 14 16 18
+                20</strong>, každé na nový riadok
+            </li>
+        </ul>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.10" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý pre vstupný parameter <em>n</em>
+            vráti tzv. súčet štvorcov pomocou vzorca <em>1^2 + 2^2 + 3^2 + ... + n^2</em> pričom tento súčet vypočítajte
+            pomocou for-cyklu. Hodnotu parametru <em>n</em> zadá používateľ cez štandardný vstup.</p>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <ul>
+            <li>Program pre <strong>n = 3</strong> vypíše hodnotu <strong>14</strong>, pretože <strong>14 = 1^2 + 2^2 +
+                3^2</strong></li>
+            <li>Program pre <strong>n = 5</strong> vypíše hodnotu <strong>55</strong>, pretože <strong>55 = 1^2 + 2^2 +
+                3^2 + 4^2 + 5^2</strong></li>
+        </ul>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.11" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý má 3 vstupné parametre <em>a0, d a
+            N</em>, v tomto poradí. Program vypíše prvých <em>N</em> členov aritmetickej postupnosti, ktorej prvý člen
+            má hodnotu <em>a0</em> a diferencia postupnosti je daná parametrom <em>d</em>. Pri riešení úlohy použite
+            for-cyklus.</p>
+        <aside class="special"><p> Ak neviete, čo je to aritmetická postupnosť, môžete sa to dočítať napr. tu: <a
+                href="https://sk.wikipedia.org/wiki/Aritmetick%C3%A1_postupnos%C5%A5" target="_blank">https://sk.wikipedia.org/wiki/Aritmetick%C3%A1_postupnos%C5%A5</a>.
+            V skratke, aritmetická postupnosť je postupnosť čísiel, v ktorej je člen postupnosti rovný súčtu predošlého
+            člena postupnosti a diferencie <em>d</em>. Ak by <em>ai</em> a <em>ai+1</em> boli 2 po sebe idúce členy
+            postupnosti, potom <em>ai+1 = ai + d</em>.</p>
+        </aside>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <p>Volanie programu s parametrami 1,2,5 vypíše čísla 1 3 5 7 9 (každé na nový riadok).</p>
+        <h4 is-upgraded>Zdôvodnenie</h4>
+        <p>Argumenty 1,2,5 predstavujú hodnoty parametrov a0 = 1, d = 2, N = 5. Teda prvý člen postupnosti je a0 = 1,
+            členy postupnosti sa od seba líšia o diferenciu d = 2 a chceme vypísať N = 5 členov postupnosti. Teda sa
+            vypíšu čísla:</p>
+        <ul>
+            <li>1 (lebo prvý člen postupnosti je a0 = 1)</li>
+            <li>3 (lebo druhý člen postupnosti je prvý člen + diferencia = 1 + 2 = 3)</li>
+            <li>5 (lebo tretí člen postupnosti je druhý člen + diferencia = 3 + 2 = 5)</li>
+            <li>7 (lebo štvrtý člen postupnosti je tretí člen + diferencia = 5 + 2 = 7)</li>
+            <li>9 (lebo piaty člen postupnosti je štvrtý člen + diferencia = 7 + 2 = 9)</li>
+        </ul>
+        <p>Keďže N = 5, vypíšeme len 5 členov postupnosti.</p>
+        <p>Volanie programu s parametrami 5,-3,4 vypíše čísla 5 2 -1 -4 (každé na nový riadok).</p>
+        <h4 is-upgraded>Zdôvodnenie</h4>
+        <p>Argumenty 5,-3,4 predstavujú hodnoty parametrov a0 = 5, d = -3, N = 4. Teda prvý člen postupnosti je a0 = 5,
+            členy postupnosti sa od seba líšia o diferenciu d = -3 a chceme vypísať N = 4 členov postupnosti. Teda sa
+            vypíšu čísla:</p>
+        <ul>
+            <li>5 (lebo prvý člen postupnosti je a0 = 5)</li>
+            <li>2 (lebo druhý člen postupnosti je prvý člen + diferencia = 5 + -3 = 2)</li>
+            <li>-1 (lebo tretí člen postupnosti je druhý člen + diferencia = 2 + -3 = -1)</li>
+            <li>-4 (lebo štvrtý člen postupnosti je tretí člen + diferencia = -1 + -3 = -4)</li>
+        </ul>
+        <p>Keďže N = 4, vypíšeme len 4 členy postupnosti.</p>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.12" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý od používateľa vyžiada hodnotu
+            parameter <em>n</em> a vypíše na obrazovku mriežku s <em>n riadkami</em> a <em>n stĺpcami</em> podľa
+            diagramov nižšie.</p>
+        <p>Pre <strong>n = 2</strong> (mriežka s 2 „riadkami&#34; a 2 „stĺpcami&#34;) by mriežka vyzerala nasledovne:
+        </p>
+        <pre><code language="language-text" class="language-text">+ - - - - + - - - - +
+|         |         |
+|         |         |
+|         |         |
+|         |         |
++ - - - - + - - - - +
+|         |         |
+|         |         |
+|         |         |
+|         |         |
++ - - - - + - - - - +
+</code></pre>
+        <p>Pre <strong>n = 3</strong> (mriežka s 3 „riadkami&#34; a 3 „stĺpcami&#34;) by mriežka vyzerala nasledovne:
+        </p>
+        <pre><code language="language-text" class="language-text">+ - - - - + - - - - + - - - - +
+|         |         |         |
+|         |         |         |
+|         |         |         |
+|         |         |         |
++ - - - - + - - - - + - - - - +
+|         |         |         |
+|         |         |         |
+|         |         |         |
+|         |         |         |
++ - - - - + - - - - + - - - - +
+|         |         |         |
+|         |         |         |
+|         |         |         |
+|         |         |         |
++ - - - - + - - - - + - - - - +
+</code></pre>
+        <aside class="special"><p> Pre zalomenie reťazca znakov do nového riadku vo funkcii printf môžte použiť znak ‘\n&#39;.</p>
+        </aside>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.13" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vyžiada od používateľa cez štandardný
+            vstup 2 parametre <em>a</em> a <em>b</em>. Môžete predpokladať, že <em>a</em> aj <em>b</em> sú kladné celé
+            čísla. Funkcia vráti súčin <em>a*b</em>. Program implementujte bez použitia operátora *, t.j. bez násobenia!
+        </p>
+        <aside class="special"><p> Zamyslite sa, ako je možné realizovať násobenie len pomocou opakovaného
+            pripočítavania!</p>
+        </aside>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <p>Spustenie programu s parametrami 2 a 5 vráti hodnotu 10.</p>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Úloha 2.14" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý od používateľa vyžiada parameter <em>n</em>.
+            Môžete predpokladať, že <em>n</em> je kladné celé číslo. Program vypíše postupne na samostatné riadky čísla
+            <em>od 1 po n</em>, s krokom +1, teda na prvý riadok vypíše 1, na druhý riadok 1 2, na tretí riadok 1 2 3,
+            atď.</p>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <p>Spustenie programu s parametrom 5 vypíše:</p>
+        <pre><code language="language-text" class="language-text">1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+</code></pre>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="✨ Bonus Úloha 2.15" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý implementuje mocninu. Používateľ zadá
+            na vstupe dve kladné čísla <em>n</em> a <em>k</em>. Program vypíše <em>k-tu</em> mocninu čísla <em>n</em>,
+            t.j. <em>n^k</em>. Program implementujte bez použitia operátora * (násobenie) a bez použitia operátora **
+            (umocnenie).</p>
+        <aside class="special"><p> Zamyslite sa, ako je možné realizovať násobenie len pomocou opakovaného
+            pripočítavania.</p>
+        </aside>
+        <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+        <ul>
+            <li>Spustenie programu so vstupnými číslami 1 a 5 vypíše hodnotu 1.</li>
+            <li>Spustenie programu so vstupnými číslami 2 a 5 vypíše hodnotu 32.</li>
+            <li>Spustenie programu so vstupnými číslami 3 a 4 vypíše hodnotu 81.</li>
+        </ul>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="✨ Bonus Úloha 2.16" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypíše tabuľku malej násobilky, spolu
+            s menami riadkov a stĺpcov pre čísla od 1 po 10. Očakávaný výsledok by mal vyzerať nasledovne:</p>
+        <pre><code language="language-text" class="language-text">    1   2   3   4   5   6   7   8   9   10
+1   1   2   3   4   5   6   7   8   9   10
+2   2   4   6   8   10  12  14  16  18  20
+3   3   6   9   12  15  18  21  24  27  30
+4   4   8   12  16  20  24  28  32  36  40
+5   5   10  15  20  25  30  35  40  45  50
+6   6   12  18  24  30  36  42  48  54  60
+7   7   14  21  28  35  42  49  56  63  70
+8   8   16  24  32  40  48  56  64  72  80
+9   9   18  27  36  45  54  63  72  81  90
+10  10  20  30  40  50  60  70  80  90  100
+</code></pre>
+        <aside class="special"><p> Pekné odsadenie textu môžete dostať pomocou ukončovacieho znaku výpisu ‘\t‘
+            (tabulátor – pre jeho použitie je nutné ho uviesť do úvodzoviek/apostrofov).</p>
+        </aside>
+
+
+    </google-codelab-step>
+
+</google-codelab>
+
+<script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+<script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+<script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+<script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+<script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

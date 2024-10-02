@@ -59,7 +59,7 @@ $color-weave-green: #0f9d58;
   }
 
   %icon-#{$icon-name} {
-    background-image: url('/images/icons/#{$icon}');
+    background-image: url('images/icons/#{$icon}');
   }
 
   @each $category in $categories {
