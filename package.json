@@ -2,7 +2,7 @@
   "name": "@paneu/zp-codelabs",
   "version": "1.0.0",
   "description": "Codelabs for university course Základy Programovania",
-  "homepage": "https://interes-group.github.io/zp-codelabs",
+  "homepage": "https://interes-group.github.io/pevs-BIAX10029-codelabs/",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
