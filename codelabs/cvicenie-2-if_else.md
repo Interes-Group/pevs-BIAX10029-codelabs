@@ -27,8 +27,6 @@ výrazov.
 
 Pre vypracovanie týchto úloh úplne postačuje použitie online kompilátora jazyku C. Napríklad stránku [OneCompiler for C](https://onecompiler.com/c)
 
-Riešenia na jednotlivé úlohy budú uverejnené najskôr nasledujúci deň po cvičení.
-
 <!-- ------------------------ -->
 ## Úloha 2.1
 

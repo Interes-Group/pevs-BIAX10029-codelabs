@@ -3,24 +3,24 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2024-10-16T23:11:36+02:00",
-  "id": "cvicenie-2a",
+  "updated": "2024-10-16T23:03:52+02:00",
+  "id": "projekt-kalkulacka",
   "duration": 0,
-  "title": "Cvičenie 2A If-Else",
+  "title": "Kalkulačka",
   "authors": "Milan Mladoniczky",
-  "summary": "Cvičenie 2A If-else",
-  "source": "cvicenie-2-if_else.md",
+  "summary": "Projekt Kalkulačka",
+  "source": "projekt-kalkulacka.md",
   "theme": "",
   "status": [
     "published"
   ],
   "category": [
-    "cvicenie"
+    "cvicenie",
+    "projekt"
   ],
   "tags": [
-    "beginner",
-    "with-bonus"
+    "beginner"
   ],
   "feedback": "https://github.com/interes-group/pevs-BIAX10029-codelabs/issues",
-  "url": "cvicenie-2a"
+  "url": "projekt-kalkulacka"
 }

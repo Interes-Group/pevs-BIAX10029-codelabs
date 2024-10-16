@@ -1,0 +1,88 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Kalkulačka</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="projekt-kalkulacka"
+                  title="Kalkulačka"
+                  environment="web"
+                  feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+
+      <google-codelab-step label="Špecifikácia" duration="0">
+        <p>Vytvorte program v jazyku C v štandarde C11, ktorý bude slúžiť ako jednoduchá kalkulačka.</p>
+<p>Program po svojom spustení vypíše používateľovi ponuku funkcií, ktoré ponúka a čaká na voľbu používateľa. Ku každej ponúkanej funkcii je priradené poradové číslo. Keď používateľ zadá poradové číslo funkcie, spustí zvolenú funkciu v rámci programu. Každá funkcia sa vypýta od používateľa požadované vstupy aby vedela vykonať svoju logiku. Program má poskytovať nasledovné funkcie:</p>
+<ul>
+<li>súčet dvoch čísel</li>
+<li>rozdiel dvoch čísel</li>
+<li>násobok dvoch čísel</li>
+<li>podiel dvoch čísel</li>
+<li>faktoriál čísla</li>
+</ul>
+<p>Ponuka funkcií programu môže vyzerať nasledovne:</p>
+<pre><code language="language-text" class="language-text">1 Súčet
+2 Rozdiel
+3 Násobok
+4 Podiel
+5 Faktoriál
+</code></pre>
+<p>Ponuka je používateľovi vypísaná vždy keď za vykonanie zvolenej funkcií skončí, t.j. program beží v cykle: <em>ponuka -&gt; voľba funkcie -&gt; spustenie funkcie -&gt; ponuka</em></p>
+<p>Ak používateľ v ponuke namiesto čísla zadá písmeno ‘<em>q</em>&#39; program skončí. Dbajte na dodržanie prebratých praktík a programovacích techník pri implementácii. Snažte sa používateľa vhodne informovať o priebehu programu, či o potrebných vstupoch pre jednotlivých funkciách.</p>
+<h2 is-upgraded>Súčet</h2>
+<p>Po voľbe funkcie súčet program od používateľa vypýta na štandardnom vstupe dve čísla. Po zadaní druhého čísla program vypíše výsledok súčtu zadaných dvoch čísel.</p>
+<h2 is-upgraded>Rozdiel</h2>
+<p>Po voľbe funkcie rozdiel program od používateľa vypýta na štandardnom vstupe dve čísla. Po zadaní druhého čísla program vypíše výsledok rozdielu prvého čísla od druhého.</p>
+<h2 is-upgraded>Násobok</h2>
+<p>Po voľbe funkcie násobok program od používateľa vypýta na štandardnom vstupe dve čísla. Po zadaní druhého čísla program vypíše výsledok násobenia zadaných dvoch čísel.</p>
+<h2 is-upgraded>Podiel</h2>
+<p>Po voľbe funkcie podiel program od používateľa vypýta na štandardnom vstupe dve čísla. Po zadaní druhého čísla program vypíše výsledok podielu prvého čísla druhým číslom.</p>
+<h2 is-upgraded>Faktoriál</h2>
+<p>Po voľbe funkcie faktoriál program od používateľa vypýta na štandardnom vstupe číslo. Po zadaní čísla program vypíše výsledok výpočtu faktoriálu zadaného čísla.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Vypracovanie" duration="0">
+        <p>Pre vypracovanie tohto projektu môžte použiť ľubovolné vývojové prostredie, ktoré podporuje programovanie v jazyku C štandardom C11. Môžte napríklad použiť IDE:</p>
+<ul>
+<li><a href="https://www.jetbrains.com/clion/" target="_blank">CLion</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> (s r<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank">ozšírením pre C/C++</a>)</li>
+<li>online kompilátor <a href="https://onecompiler.com/c" target="_blank">OneCompiler for C</a></li>
+</ul>
+<aside class="warning"><p> Ak používate ako vývojové prostredie lokálny a editor a následnú kompiláciu cez terminál. Použite príkaz:</p>
+<pre><code language="language-shell" class="language-shell">gcc -std=c11 -o program -Wall -Wextra main.c
+</code></pre>
+</aside>
+<p>Program môže byť implementovaný ako jeden súbor. Pre implementáciu nie je potrebná žiadna externá knižnica, len štandardné funkcie poskytovanie jazykom C ako <em>&lt;stdio.h&gt;</em> a <em>&lt;stdlib.h&gt;</em></p>
+
+
+      </google-codelab-step>
+
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
