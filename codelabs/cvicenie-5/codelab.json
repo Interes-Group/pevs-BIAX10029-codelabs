@@ -3,23 +3,23 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "",
-  "updated": "2024-10-23T22:14:24+02:00",
-  "id": "projekt-kalkulacka",
+  "updated": "2024-10-23T20:34:45+02:00",
+  "id": "cvicenie-5",
   "duration": 0,
-  "title": "Kalkulačka",
+  "title": "Cvičenie 5 - Súbory",
   "authors": "Milan Mladoniczky",
-  "summary": "Projekt Kalkulačka",
-  "source": "projekt-kalkulacka.md",
+  "summary": "Cvičenie 5 Súbory",
+  "source": "cvicenie-5.md",
   "theme": "",
   "status": [
     "published"
   ],
   "category": [
-    "projekt"
+    "cvicenie"
   ],
   "tags": [
     "beginner"
   ],
   "feedback": "https://github.com/interes-group/pevs-BIAX10029-codelabs/issues",
-  "url": "projekt-kalkulacka"
+  "url": "cvicenie-5"
 }

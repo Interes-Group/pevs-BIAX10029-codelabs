@@ -108,6 +108,14 @@
                     <paper-tab>Podľa trvania</paper-tab>
                 </paper-tabs>
             </div>
+            <paper-dropdown-menu label="Filter by category" class="dropdown-filter" no-label-float noink no-animations>
+                <paper-listbox id="categorylist" slot="dropdown-content" class="dropdown-content"
+                               on-iron-activate="onCategoryActivate" attr-for-selected="filter">
+                    <paper-item filter="cvicenie">cvicenie</paper-item>
+                    <paper-item filter="projekt">projekt</paper-item>
+                    <paper-item filter="zadanie">zadanie</paper-item>
+                </paper-listbox>
+            </paper-dropdown-menu>
         </div>
         <card-sorter id="cards" class="site-width">
             <a href="codelabs/cvicenie-1/index.html?index=..%2F..index" on-tap="navigate"
@@ -151,7 +159,7 @@
             </a>
             <a href="codelabs/cvicenie-3/index.html?index=..%2F..index" on-tap="navigate"
                class="codelab-card category-cvicenie" data-category="cvicenie" data-title="Cvičenie 3 Funkcie"
-               data-duration="0" data-updated="2024-10-16T22:50:10+02:00" data-tags="beginner" data-pin="">
+               data-duration="0" data-updated="2024-10-16T23:25:21+02:00" data-tags="beginner" data-pin="">
                 <div class="description">Cvičenie 3 Funkcie</div>
                 <div class="card-duration">
                     <span></span>
@@ -176,17 +184,44 @@
                     <paper-button class="cvicenie-bg">Začať</paper-button>
                 </div>
             </a>
-            <a href="codelabs/projekt-kalkulacka/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-cvicenie" data-category="cvicenie,projekt" data-title="Kalkulačka"
-               data-duration="0" data-updated="2024-10-16T23:03:52+02:00" data-tags="beginner" data-pin="">
-                <div class="description">Kalkulačka</div>
+            <a href="codelabs/cvicenie-5/index.html?index=..%2F..index" on-tap="navigate"
+               class="codelab-card category-cvicenie" data-category="cvicenie" data-title="Cvičenie 5 - Súbory"
+               data-duration="0" data-updated="2024-10-23T20:34:45+02:00" data-tags="beginner" data-pin="">
+                <div class="description">Cvičenie 5 - Súbory</div>
                 <div class="card-duration">
                     <span></span>
-                    <span>Updated Oct 16, 2024</span>
+                    <span>Updated Oct 23, 2024</span>
                 </div>
                 <div class="card-footer">
                     <div class="category-icon cvicenie-icon"></div>
                     <paper-button class="cvicenie-bg">Začať</paper-button>
+                </div>
+            </a>
+            <a href="codelabs/projekt-kalkulacka/index.html?index=..%2F..index" on-tap="navigate"
+               class="codelab-card category-projekt" data-category="projekt" data-title="Kalkulačka" data-duration="0"
+               data-updated="2024-10-23T22:14:24+02:00" data-tags="beginner" data-pin="">
+                <div class="description">Kalkulačka</div>
+                <div class="card-duration">
+                    <span></span>
+                    <span>Updated Oct 23, 2024</span>
+                </div>
+                <div class="card-footer">
+                    <div class="category-icon projekt-icon"></div>
+                    <paper-button class="projekt-bg">Začať</paper-button>
+                </div>
+            </a>
+            <a href="codelabs/zadanie-hadanie_cisla/index.html?index=..%2F..index" on-tap="navigate"
+               class="codelab-card category-zadanie" data-category="zadanie,bodove_hodnotenie"
+               data-title="Zadanie 1 - Hádanie čísla" data-duration="0" data-updated="2024-10-23T22:09:19+02:00"
+               data-tags="beginner" data-pin="">
+                <div class="description">Zadanie 1 - Hádanie čísla</div>
+                <div class="card-duration">
+                    <span></span>
+                    <span>Updated Oct 23, 2024</span>
+                </div>
+                <div class="card-footer">
+                    <div class="category-icon zadanie-icon"></div>
+                    <paper-button class="zadanie-bg">Začať</paper-button>
                 </div>
             </a>
         </card-sorter>

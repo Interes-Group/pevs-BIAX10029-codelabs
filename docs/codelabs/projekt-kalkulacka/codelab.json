@@ -2,7 +2,8 @@
   "environment": "web",
   "format": "html",
   "prefix": "https://storage.googleapis.com",
-  "updated": "2024-10-16T23:03:52+02:00",
+  "mainga": "",
+  "updated": "2024-10-23T22:14:24+02:00",
   "id": "projekt-kalkulacka",
   "duration": 0,
   "title": "Kalkulačka",
@@ -14,7 +15,6 @@
     "published"
   ],
   "category": [
-    "cvicenie",
     "projekt"
   ],
   "tags": [

@@ -3,23 +3,24 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "",
-  "updated": "2024-10-23T22:14:24+02:00",
-  "id": "projekt-kalkulacka",
+  "updated": "2024-10-23T22:09:19+02:00",
+  "id": "zadanie-hadanie_cisla",
   "duration": 0,
-  "title": "Kalkulačka",
+  "title": "Zadanie 1 - Hádanie čísla",
   "authors": "Milan Mladoniczky",
-  "summary": "Projekt Kalkulačka",
-  "source": "projekt-kalkulacka.md",
+  "summary": "Zadanie 1 Hádanie čísla",
+  "source": "zadanie-hadanie_cisla.md",
   "theme": "",
   "status": [
     "published"
   ],
   "category": [
-    "projekt"
+    "zadanie",
+    "bodove_hodnotenie"
   ],
   "tags": [
     "beginner"
   ],
   "feedback": "https://github.com/interes-group/pevs-BIAX10029-codelabs/issues",
-  "url": "projekt-kalkulacka"
+  "url": "zadanie-hadanie_cisla"
 }

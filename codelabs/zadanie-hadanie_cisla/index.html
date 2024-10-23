@@ -1,0 +1,93 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Zadanie 1 - Hádanie čísla</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="zadanie-hadanie_cisla"
+                  title="Zadanie 1 - Hádanie čísla"
+                  environment="web"
+                  feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+
+      <google-codelab-step label="Úvod" duration="0">
+        <p>Úlohou je naprogramovať jednoduchú hru pomocou jazyka C, štandard C11, v ktorej sa hráč snaží uhádnuť náhodné číslo generované hrou tzv. tajomné číslo. Používateľ interaguje s hrou pomocou príkazového riadku / termínálu, t.j. štandardným vstupom a výstupom.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Priebeh" duration="0">
+        <p>Na začiatku, hra vypýta od hráča interval v ktorom vygeneruje náhodné číslo. Rozdiel hraníc intervalu musí byť minimálne 10. Hráč následne môže napísať číslo, ktoré si myslí, že je tajomné číslo. Po zadaní čísla hra pokračuje nasledovne:</p>
+<ul>
+<li>Ak hráč zadal číslo mimo stanoveného intervalu na začiatku hry, hra vypíše hráčovi &#34;Zadané číslo je mimo stanoveného intervalu&#34;, následne hra vypíše v akom intervale sa môže tajomné číslo nachádza a dá hráčovi možnosť hádať znovu.</li>
+<li>Ak hráč zadal číslo, ktoré je väčšie ako tajomné číslo, hra vypíše hráčovi &#34;Tajomné číslo je menšie ako tvoj odhad&#34; a dá hráčovi možnosť hádať znovu.</li>
+<li>Ak hráč zadal číslo, ktoré je menšie ako tajomné číslo, hra vypíše hráčovi &#34;Tajomné číslo je väčšie ako tvoj odhad&#34; a dá hráčovi možnosť hádať znovu.</li>
+<li>Ak hráč uhádol číslo, hra mu pogratuluje a skončí.</li>
+</ul>
+<p>Hra končí ak hráč uhádne tajomné číslo ale sa dobrovoľne vzdá a ukončí hru tím, že napíše znak ‘Q&#39; do vstupu pre odhad. Hra počíta koľko pokusov hráč zadal a pri ukončení hry ich vypíše hráčovi.</p>
+<p>Ešte pred ukončením programu zapíšte záznam o hádaní do súboru <em>hadaj_cislo.log</em>. Záznam o hre má nasledujúci tvar:</p>
+<p><strong>tajomné_číslo počet_pokusov uhadol/neuhadol</strong></p>
+<p>Napríklad ak tajomné číslo bolo 8 a používateľ ho uhádol na 3 pokusy záznam v súbore by mal vyzerať nasledovne: <code>8 3 uhadol</code>.</p>
+<p>Program do súboru iba pridáva záznamy o hre nikdy nepremazáva existujúce dáta. Ak súbor neexistuje vytvorí ho. Súbor sa môže nachádzať v rovnakom priečinku ako zdrojový súbor <em>main.c</em> .</p>
+<p>Dbajte na dodatočnú komunikáciu/výpisy hráčovi o priebehu hry, prípadne aký vstup očakávate od hráča.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Implementácia" duration="0">
+        <p>Pri implementácii zadania musíte vytvoriť aspoň jednu vlastnú funkciu, ktorú následne použijete v inej časti programu. Pri implementácii môžte použiť všetky výrazy, techniky a funkcie, ktoré sme doteraz prebrali a samozrejme aj nejaká tvorivá práca navyše môže byť ocenená bonusovými bodmi.</p>
+<aside class="special"><p> Pomôcka:</p>
+<p>Náhodné číslo je možné vygenerovať pomocou funkcie <em>rand()</em>, ktorá vráti náhodné číslo medzi 0 a konštantou <em>RAND_MAX</em>. <em>rand()</em> je funkcia z knižnice <em>stdlib.h</em>. Pre použitie je potrebné túto knižnicu najprv zahrnúť do zdrojového kódu na začiatku súboru main.c - <code>#include &lt;stdlib.h&gt;</code></p>
+<p>Ak chceme vygenerovať náhodné číslo medzi dvomi hranicami napr. medzi číslom A a číslom B tak vieme použiť vzorec: <code>rand() % (B - A + 1) + A</code></p>
+</aside>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Hodnotenie" duration="0">
+        <p>Zadanie je ohodnotené 20 bodmi. Odovzdaný program musí byť skompilovateľný, inak je hodnotený 0 bodmi. Pri vypracovaní zadania sa kontroluje originalita zadaní, a všetky zadania so zhodou vyššou ako 85% sú hodnotené 0 bodmi. Pri hodnotení vypracovania sa bude prihliadať na nasledujúce:</p>
+<ul>
+<li>použitie vlastnej funkcie</li>
+<li>využitie cyklov (for cyklus prípadne while cyklus)</li>
+<li>využitie podmienok if - else if - else</li>
+<li>práca so súborom</li>
+<li>korektnosť kódu</li>
+<li>komunikácia hry s hráčom</li>
+</ul>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Odovzdanie" duration="0">
+        <p>Vypracovanie zadania odovzdajte do určeného miesta v MS Teams (Assignments &gt; Zadanie 1 - Hádanie čísla). Odovzdávajte iba súbor <em>main.c</em> so zdrojovým kódom programu. Vypracovanie je nutné odovzdať do <strong>31.10.2024 23:59</strong>. Neodovzdanie je hodnotené 0 bodmi. V prípade otázok, alebo technických problémov ma môžte kontaktovať na MS Teams alebo emailom milan.mladoniczky@paneurouni.com .</p>
+
+
+      </google-codelab-step>
+
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

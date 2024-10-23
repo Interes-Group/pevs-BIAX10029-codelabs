@@ -1,0 +1,102 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Cvičenie 5 - Súbory</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="cvicenie-5"
+                  title="Cvičenie 5 - Súbory"
+                  environment="web"
+                  feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+
+      <google-codelab-step label="Úvod" duration="0">
+        <p>Na tomto cvičení si preberieme prácu so súbormi.</p>
+<h2 is-upgraded>Obsah</h2>
+<ul>
+<li>otvorenie súboru a jeho čítanie</li>
+<li>zapisovanie do súboru</li>
+</ul>
+<aside class="warning"><p> Ak používate ako vývojové prostredie lokálny a editor a následnú kompiláciu cez terminál. Použite príkaz:</p>
+<pre><code language="language-shell" class="language-shell">gcc -std=c11 -o program -Wall -Wextra main.c
+</code></pre>
+</aside>
+<p>Pre vypracovanie týchto úloh odporúčam lokálne vývojové prostredie (napr. CLion alebo VS Code) a nie webové prostredie.</p>
+<p>Riešenia na jednotlivé úlohy budú uverejnené najskôr nasledujúci deň po cvičení.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 5.1" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý otvorí existujúci súbor <strong><em>data.txt</em></strong>, načíta všetky údaje a vypíše ich na štandardný výstup.</p>
+<p>Dáta zo súboru načítajte po riadkoch a každý riadok hneď po načítaní vypíšte. Snažte sa implementáciu spraviť tak aby v jednom momente bol načítaný len jeden riadok.</p>
+<aside class="special"><p> Nezabudnite si pred spustením program vytvoriť súbor <em>data.txt</em> v tom istom priečinku ako zdrojový súbor <em>main.c</em> .</p>
+</aside>
+<h2 is-upgraded>Obsah súboru <em>data.txt</em></h2>
+<pre><code language="language-text" class="language-text">Na prvé cvičenie prišli všetci.
+Na druhé už o niečo menej.
+Na tretie už o málo menej.
+Na štvrté prišli tí, ktorí sa chcú niečo naučiť.
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 5.2" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý zapíše do súboru výpočty, ktoré zadá používateľ. Program bude sčítavať dve čísla, ktoré zadá používateľ a vypíše ich výsledok na štandardný výstup a zároveň zapíše výpočet do súboru. Program si pýta dve čísla pre výpočet v cykle do nekonečna pokiaľ používateľ namiesto prvého čísla nezadá znak <em>‘q&#39;</em>.</p>
+<p>Výpočet je uložený do súboru ako trojica čísel oddelená medzerou. Každý výpočet je uložený do nového riadku. Výpočty ukladajte do súboru <strong><em>vypocty.txt</em></strong> do rovnakého priečinku ako je váš zdrojový súbor <em>main.c</em> . Ak súbor neexistuje, vytvorte ho programom. Ak súbor pri otvorení existuje prepíšte jeho existujúce dáta novými.</p>
+<aside class="warning"><p> Dávajte si pozor na zatvorenie súboru pred skončením programu.</p>
+</aside>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Ak vstupy od používateľa pre výpočty boli v nasledovnom poradí:</p>
+<ul>
+<li>5 a 3</li>
+<li>8 a 7</li>
+<li>21 a 56</li>
+</ul>
+<p>Program by mal vytvoriť súbor <em>vypocty.txt</em> s nasledovným obsahom:</p>
+<pre><code language="language-text" class="language-text">5 3 8
+8 7 15
+21 56 77
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 5.3" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý načíta súbor <em>vypocty.txt</em> a pokračuje v jeho zapisovaní.</p>
+<p>Program na začiatku načíta súbor <em>vypocty.txt</em>. Ak súbor neexistuje vytvorí ho. Ak súbor existuje načíta postupne z neho všetky výpočty a zvaliduje či sú správne vypočítané, t.j. či z načítanej trojice čísel v riadku súčet prvých dvoch čísiel sa rovná tretiemu číslu. Ak kontrola narazí na nesprávny výpočet tak na to upozorní používateľa vypísaním načítaných čísel a chybovou správou, program však pokračuje ďalej. Keď program načíta všetky existujúce výpočty vypíše koľko výpočtov načítal na obrazovku.</p>
+<p>Program následne pokračuje v rovnakej činnosti ako v úlohe 5.2 s opýtaním sa používateľa o dve čísla a vypočíta ich súčet. Výpočet potom zapíše na koniec súboru. Existujúce dáta nesmú byť prepísané. Formát súboru <em>vypocty.txt</em> musí byť zachovaný ako je v úlohe 5.2.</p>
+<aside class="warning"><p> Dávajte si pozor na mód pod ktorým otvárate súbor a na zatvorenie súboru pred skončením programu.</p>
+</aside>
+
+
+      </google-codelab-step>
+
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 summary: Projekt Kalkulačka
 id: projekt-kalkulacka
-categories: cvicenie, projekt
+categories: projekt
 tags: beginner
 status: Published
 authors: Milan Mladoniczky

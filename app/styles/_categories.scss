@@ -206,4 +206,5 @@ $color-weave-green, 'weave.svg');
 @include codelab-card(['sample'], #fc0023, 'sample.png');
 
 @include codelab-card(['cvicenie'], $color-android-auto-blue, 'practice.png');
-@include codelab-card(['zadanie'], $color-android-green, 'project.png');
+@include codelab-card(['projekt'], $color-android-green, 'project.png');
+@include codelab-card(['zadanie'], $color-firebase-orange, 'assignment.png');
