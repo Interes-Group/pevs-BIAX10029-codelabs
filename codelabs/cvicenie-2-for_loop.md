@@ -36,6 +36,25 @@ Hodnotu _N_ zadaná používateľ cez štandardný vstup.
 
 Pre číslo **10** na vstupe program vypíše postupnosť **1 2 3 4 5 6 7 8 9 10**.
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Zadajte číslo: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        printf("%d ", i);
+    }
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 2.9
 
@@ -48,6 +67,27 @@ začínajúc dvojkou. Počet čísiel na vypísanie určuje používateľ zo št
 - Pre zadanie **N = 5** vypíše program na obrazovku čísla **2 4 6 8 10**, každé na nový riadok.
 - Pre zadanie **N = 10** vypíše program na obrazovku čísla **2 4 6 8 10 12 14 16 18 20**, každé na nový riadok
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Zadajte číslo: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n * 2; i++) {
+        if (i % 2 == 0) {
+            printf("%d\n", i);
+        }
+    }
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 2.10
 
@@ -59,6 +99,27 @@ používateľ cez štandardný vstup.
 
 - Program pre **n = 3** vypíše hodnotu **14**, pretože **14 = 1^2 + 2^2 + 3^2**
 - Program pre **n = 5** vypíše hodnotu **55**, pretože **55 = 1^2 + 2^2 + 3^2 + 4^2 + 5^2**
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Zadajte číslo: ");
+    scanf("%d", &n);
+
+    int sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sum += i * i;
+    }
+    printf("%d", sum);
+
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 2.11
@@ -104,6 +165,28 @@ vypísať N = 4 členov postupnosti. Teda sa vypíšu čísla:
 
 Keďže N = 4, vypíšeme len 4 členy postupnosti.
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int a0, d, n;
+
+    printf("Zadajte parametre aritmetickej postupnosti a0 d n (čísla musia byť oddelené medzerou): ");
+    scanf("%d %d %d", &a0, &d, &n);
+
+    printf("%d\n", a0);
+    int previous = a0;
+    for (int i = 0; i < n-1; i++) {
+        previous += d;
+        printf("%d\n", previous);
+    }
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 2.12
 
@@ -148,6 +231,39 @@ Pre **n = 3** (mriežka s 3 „riadkami“ a 3 „stĺpcami“) by mriežka vyze
 > aside positive
 > Pre zalomenie reťazca znakov do nového riadku vo funkcii printf môžte použiť znak '\n'.
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Zadajte veľkosť mriežky: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n*5; i++) {
+        if (i % 5 == 0) {
+            for (int j = 0; j < n; j++) {
+                printf("+ - - - - ");
+            }
+            printf("+\n");
+        } else {
+            for (int j = 0; j < n; j++) {
+                printf("|         ");
+            }
+            printf("|\n");
+        }
+    }
+    for (int j = 0; j < n; j++) {
+        printf("+ - - - - ");
+    }
+    printf("+\n");
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 2.13
 
@@ -161,6 +277,27 @@ Program implementujte bez použitia operátora *, t.j. bez násobenia!
 ### Príklady vstupov / výstupov programu
 
 Spustenie programu s parametrami 2 a 5 vráti hodnotu 10.
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Zadajte dve čísla oddelené medzerou: ");
+    scanf("%d %d", &a, &b);
+
+    int r = 0;
+    for (int i = 0; i < b; i++) {
+        r += a;
+    }
+    printf("%d", r);
+
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 2.14
@@ -180,6 +317,28 @@ Spustenie programu s parametrom 5 vypíše:
 1 2 3 4 5
 ```
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Zadajte číslo: ");
+    scanf("%d", &n);
+
+    for(int i=1; i <= n; i++){
+        for(int j=1; j <= i; j++){
+            printf("%d ",j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## ✨ Bonus Úloha 2.15
 
@@ -195,6 +354,12 @@ Program implementujte bez použitia operátora * (násobenie) a bez použitia op
 - Spustenie programu so vstupnými číslami 1 a 5 vypíše hodnotu 1.
 - Spustenie programu so vstupnými číslami 2 a 5 vypíše hodnotu 32.
 - Spustenie programu so vstupnými číslami 3 a 4 vypíše hodnotu 81.
+
+### Riešenie
+
+```C
+
+```
 
 <!-- ------------------------ -->
 ## ✨ Bonus Úloha 2.16
@@ -220,3 +385,8 @@ spolu s menami riadkov a stĺpcov pre čísla od 1 po 10. Očakávaný výsledok
 > Pekné odsadenie textu môžete dostať pomocou ukončovacieho znaku výpisu ‘\t‘ (tabulátor – pre jeho použitie 
 > je nutné ho uviesť do úvodzoviek/apostrofov).
 
+### Riešenie
+
+```C
+
+```

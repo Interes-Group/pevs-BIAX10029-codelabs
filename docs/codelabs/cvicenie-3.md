@@ -41,6 +41,25 @@ parameter a vráti hodnotu tretiu mocninu parametra _a_.
 - Volanie funkcie so vstupným argumentom hodnoty 3, t.j. volanie tretia_mocnina(3), vráti hodnotu
   27, pretože 3\*3\*3 = 27.
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int tretia_mocnina(int a) {
+    return a * a * a;
+}
+
+int main() {
+
+    printf("%d\n", tretia_mocnina(1));
+    printf("%d\n", tretia_mocnina(2));
+    printf("%d\n", tretia_mocnina(3));
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 3.2
 
@@ -52,6 +71,24 @@ Upravte funkciu **_double priemer_troch(int a, int b, int c)_** z predošlej úl
 
 - Volanie funkcie priemer_troch(1,2,3) vráti hodnotu 2.0, pretože (1+2+3)/3 = 2.0.
 - Volanie funkcie priemer_troch(1,2,4.5) vráti hodnotu 2.5, pretože (1+2+4.5)/3 = 2.5.
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+float priemer_troch(float a, float b, float c) {
+    return (a + b + c) / 3.0;
+}
+
+int main() {
+
+    printf("%.2f\n", priemer_troch(1, 2, 3));
+    printf("%.2f\n", priemer_troch(1, 2, 4.5));
+
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 3.3
@@ -65,6 +102,26 @@ týchto 2 čísiel.
 - Volanie minimum_dvoch(2,5) vráti hodnotu 2
 - Volanie minimum_dvoch(5,5) vráti hodnotu 5
 - Volanie minimum_dvoch(-2,-105) vráti hodnotu -105
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int minimum_dvoch(int a, int b) {
+    if (a < b) return a;
+    return b;
+}
+
+int main() {
+
+    printf("%d\n", minimum_dvoch(2,5));
+    printf("%d\n", minimum_dvoch(5,5));
+    printf("%d\n", minimum_dvoch(-2,-105));
+
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 3.4
@@ -81,6 +138,27 @@ Definujte funkciu **_int pocet_rovnakych(int a, int b, int c)_** s 3 parametrami
 - Volanie pocet_rovnakych(2,5,8) vráti hodnotu 0.
 - Volanie pocet_rovnakych(1,2,1) vráti 2
 - Volanie pocet_rovnakych(10,10,10) vráti 3.
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int pocet_rovnakych(int a, int b, int c){
+    if(a != b && a != c && b != c) return 0;
+    if(a == b && b == c) return 3;
+    if(a == b || a == c || b == c) return 2;
+}
+
+int main() {
+
+    printf("%d\n", pocet_rovnakych(2,5,8));
+    printf("%d\n", pocet_rovnakych(1,2,1));
+    printf("%d\n", pocet_rovnakych(10,10,10));
+
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 3.5
@@ -100,6 +178,36 @@ vypíše, že vstupný argument musí byť nezáporné číslo a vráti hodnotu 
 - Volanie pocet_delitelnych_5(-3) vypíše, že vstupný argument musí byť nezáporné číslo a vráti číslo
   -1.
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int pocet_delitelnych_5(int n) {
+    if (n < 0) {
+        printf("Vstupný argument n musí byť nezáporné číslo\n");
+        return -1;
+    }
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        printf("Zadajte ľubovolné číslo: ");
+        int input;
+        scanf("%d", &input);
+        if (input % 5 == 0) count++;
+    }
+    return count;
+}
+
+int main() {
+
+    printf("%d\n", pocet_delitelnych_5(5));
+    printf("%d\n", pocet_delitelnych_5(4));
+    printf("%d\n", pocet_delitelnych_5(-3));
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 3.6
 
@@ -113,6 +221,36 @@ vypíše príslušnú chybovú správu a vráti hodnotu -1. V prípade, že _n_ 
 - Volanie sucet_nacitanych(-1) vypíše chybovú správu, že hodnota n je záporná a vráti -1.
 - Volanie sucet_nacitanych(4) načíta 4 čísla z klávesnice. Ak by čísla boli napríklad 5, -2, 10, -7,
   funkcia vráti 6, pretože 5 + (-2) + 10 + (-7) = 6.
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int sucet_nacitanych(int n) {
+    if (n < 0) {
+        printf("paramter n nemôže byť záporné číslo\n");
+        return -1;
+    }
+    if (n == 0) return 0;
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        int input;
+        printf("Zadaj %d. cislo: ", i + 1);
+        scanf("%d", &input);
+        sum += input;
+    }
+    return sum;
+}
+
+int main() {
+
+    printf("%d\n", sucet_nacitanych(-1));
+    printf("%d\n", sucet_nacitanych(4));
+
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 3.7
@@ -131,6 +269,64 @@ musí byť aspoň 2 a ukončí program.
 - Volanie druhe_najvacsie(3) načíta 3 čísla z klávesnice. Ak sú tieto čísla napríklad -10, -5, 0 funkcia
   vráti číslo -5, pretože -10 ≤ -5 ≤ 0
 
+### Riešenie
+
+```C
+#include <stdio.h>
+#include <limits.h>
+
+int druhe_najvacsie(int n) {
+    if (n < 2) {
+        printf("Chyba: hodnota vstupného argumentu musí byť aspoň 2.\n");
+        return -1;
+    }
+
+    int max1 = INT_MIN;  // Najväčšie číslo
+    int max2 = INT_MIN;  // Druhé najväčšie číslo
+    int num;
+
+    for (int i = 0; i < n; i++) {
+        printf("Číslo %d: ", i + 1);
+        scanf("%d", &num);
+
+        // Ak je nové číslo väčšie ako max1, posunieme max1 do max2
+        if (num > max1) {
+            max2 = max1;
+            max1 = num;
+        }
+            // Ak je nové číslo menšie ako max1, ale väčšie ako max2
+        else if (num > max2 && num != max1) {
+            max2 = num;
+        }
+    }
+
+    if (max2 == INT_MIN) {
+        printf("Nie je možné určiť druhé najväčšie číslo.\n");
+        return -1;
+    }
+
+    return max2;
+}
+
+int main() {
+
+    int output = druhe_najvacsie(5);
+    if (output == -1) return 1;
+    else printf("%d\n", output);
+
+    output = druhe_najvacsie(3);
+    if (output == -1) return 1;
+    else printf("%d\n", output);
+
+    output = druhe_najvacsie(1);
+    if (output == -1) return 1;
+    else printf("%d\n", output);
+
+    return 0;
+}
+```
+
+<!-- ------------------------ -->
 ## ✨ Bonus Úloha 3.8
 
 Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý realizuje nasledovnú činnosť.
@@ -150,6 +346,7 @@ ktoré boli deliteľné číslom k.
 - Volanie pocet_delitelnych(-1,-2) vypíše chybovú správu, že hodnota n je záporná a že hodnota k nie
 je kladná a vráti -1.
 
+<!-- ------------------------ -->
 ## ✨ Bonus Úloha 3.9
 
 Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý realizuje nasledovnú činnosť.

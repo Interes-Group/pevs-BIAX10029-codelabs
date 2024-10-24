@@ -51,6 +51,22 @@
 <li>Volanie funkcie so vstupným argumentom hodnoty 2, t.j. volanie tretia_mocnina(2), vráti hodnotu 8, pretože 2*2*2 = 8.</li>
 <li>Volanie funkcie so vstupným argumentom hodnoty 3, t.j. volanie tretia_mocnina(3), vráti hodnotu 27, pretože 3*3*3 = 27.</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int tretia_mocnina(int a) {
+    return a * a * a;
+}
+
+int main() {
+
+    printf(&#34;%d\n&#34;, tretia_mocnina(1));
+    printf(&#34;%d\n&#34;, tretia_mocnina(2));
+    printf(&#34;%d\n&#34;, tretia_mocnina(3));
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -62,6 +78,21 @@
 <li>Volanie funkcie priemer_troch(1,2,3) vráti hodnotu 2.0, pretože (1+2+3)/3 = 2.0.</li>
 <li>Volanie funkcie priemer_troch(1,2,4.5) vráti hodnotu 2.5, pretože (1+2+4.5)/3 = 2.5.</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+float priemer_troch(float a, float b, float c) {
+    return (a + b + c) / 3.0;
+}
+
+int main() {
+
+    printf(&#34;%.2f\n&#34;, priemer_troch(1, 2, 3));
+    printf(&#34;%.2f\n&#34;, priemer_troch(1, 2, 4.5));
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -74,6 +105,23 @@
 <li>Volanie minimum_dvoch(5,5) vráti hodnotu 5</li>
 <li>Volanie minimum_dvoch(-2,-105) vráti hodnotu -105</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int minimum_dvoch(int a, int b) {
+    if (a &lt; b) return a;
+    return b;
+}
+
+int main() {
+
+    printf(&#34;%d\n&#34;, minimum_dvoch(2,5));
+    printf(&#34;%d\n&#34;, minimum_dvoch(5,5));
+    printf(&#34;%d\n&#34;, minimum_dvoch(-2,-105));
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -91,6 +139,24 @@
 <li>Volanie pocet_rovnakych(1,2,1) vráti 2</li>
 <li>Volanie pocet_rovnakych(10,10,10) vráti 3.</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int pocet_rovnakych(int a, int b, int c){
+    if(a != b &amp;&amp; a != c &amp;&amp; b != c) return 0;
+    if(a == b &amp;&amp; b == c) return 3;
+    if(a == b || a == c || b == c) return 2;
+}
+
+int main() {
+
+    printf(&#34;%d\n&#34;, pocet_rovnakych(2,5,8));
+    printf(&#34;%d\n&#34;, pocet_rovnakych(1,2,1));
+    printf(&#34;%d\n&#34;, pocet_rovnakych(10,10,10));
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -103,6 +169,33 @@
 <li>Volanie pocet_delitelnych_5(4) načíta 4 čísla z klávesnice. Ak čísla sú napríklad 1,2,3,4 funkcia vráti číslo 0 (pretože ani jedno z čísiel nie je deliteľné 5).</li>
 <li>Volanie pocet_delitelnych_5(-3) vypíše, že vstupný argument musí byť nezáporné číslo a vráti číslo -1.</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int pocet_delitelnych_5(int n) {
+    if (n &lt; 0) {
+        printf(&#34;Vstupný argument n musí byť nezáporné číslo\n&#34;);
+        return -1;
+    }
+    int count = 0;
+    for (int i = 0; i &lt; n; i++) {
+        printf(&#34;Zadajte ľubovolné číslo: &#34;);
+        int input;
+        scanf(&#34;%d&#34;, &amp;input);
+        if (input % 5 == 0) count++;
+    }
+    return count;
+}
+
+int main() {
+
+    printf(&#34;%d\n&#34;, pocet_delitelnych_5(5));
+    printf(&#34;%d\n&#34;, pocet_delitelnych_5(4));
+    printf(&#34;%d\n&#34;, pocet_delitelnych_5(-3));
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -114,6 +207,33 @@
 <li>Volanie sucet_nacitanych(-1) vypíše chybovú správu, že hodnota n je záporná a vráti -1.</li>
 <li>Volanie sucet_nacitanych(4) načíta 4 čísla z klávesnice. Ak by čísla boli napríklad 5, -2, 10, -7, funkcia vráti 6, pretože 5 + (-2) + 10 + (-7) = 6.</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int sucet_nacitanych(int n) {
+    if (n &lt; 0) {
+        printf(&#34;paramter n nemôže byť záporné číslo\n&#34;);
+        return -1;
+    }
+    if (n == 0) return 0;
+    int sum = 0;
+    for (int i = 0; i &lt; n; ++i) {
+        int input;
+        printf(&#34;Zadaj %d. cislo: &#34;, i + 1);
+        scanf(&#34;%d&#34;, &amp;input);
+        sum += input;
+    }
+    return sum;
+}
+
+int main() {
+
+    printf(&#34;%d\n&#34;, sucet_nacitanych(-1));
+    printf(&#34;%d\n&#34;, sucet_nacitanych(4));
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -126,6 +246,60 @@
 <li>Volanie druhe_najvacsie(5) načíta 5 čísiel z klávesnice. Ak sú tieto čísla napríklad 5,-2,1,2,3 funkcia vráti číslo 3, pretože -2 ≤ 1 ≤ 2 ≤ 3 ≤ 5</li>
 <li>Volanie druhe_najvacsie(3) načíta 3 čísla z klávesnice. Ak sú tieto čísla napríklad -10, -5, 0 funkcia vráti číslo -5, pretože -10 ≤ -5 ≤ 0</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+
+int druhe_najvacsie(int n) {
+    if (n &lt; 2) {
+        printf(&#34;Chyba: hodnota vstupného argumentu musí byť aspoň 2.\n&#34;);
+        return -1;
+    }
+
+    int max1 = INT_MIN;  // Najväčšie číslo
+    int max2 = INT_MIN;  // Druhé najväčšie číslo
+    int num;
+
+    for (int i = 0; i &lt; n; i++) {
+        printf(&#34;Číslo %d: &#34;, i + 1);
+        scanf(&#34;%d&#34;, &amp;num);
+
+        // Ak je nové číslo väčšie ako max1, posunieme max1 do max2
+        if (num &gt; max1) {
+            max2 = max1;
+            max1 = num;
+        }
+            // Ak je nové číslo menšie ako max1, ale väčšie ako max2
+        else if (num &gt; max2 &amp;&amp; num != max1) {
+            max2 = num;
+        }
+    }
+
+    if (max2 == INT_MIN) {
+        printf(&#34;Nie je možné určiť druhé najväčšie číslo.\n&#34;);
+        return -1;
+    }
+
+    return max2;
+}
+
+int main() {
+
+    int output = druhe_najvacsie(5);
+    if (output == -1) return 1;
+    else printf(&#34;%d\n&#34;, output);
+
+    output = druhe_najvacsie(3);
+    if (output == -1) return 1;
+    else printf(&#34;%d\n&#34;, output);
+
+    output = druhe_najvacsie(1);
+    if (output == -1) return 1;
+    else printf(&#34;%d\n&#34;, output);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>

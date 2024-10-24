@@ -48,6 +48,23 @@
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý nájde maximum z dvoch zadaných čísel. Čísla môže zadať používateľ štandardným vstupom. Program vypíše svoje zistenie používateľovi.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Ak používateľ zadá ako vstup čísla 5 a 8 tak program vypíše číslo 8 ako maximum.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b;
+
+    printf(&#34;Zadajte dve čísla oddelené medzerou: &#34;);
+    scanf(&#34;%d %d&#34;, &amp;a, &amp;b);
+    if (a &lt; b) {
+        printf(&#34;%d&#34;, b);
+    } else {
+        printf(&#34;%d&#34;, a);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -56,6 +73,25 @@
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý rozhodne či zadané číslo je pozitívne, negatívne alebo nula. Čísla môže zadať používateľ štandardným vstupom. Program po zadaní vstupu vypíše či je číslo pozitívne, negatívne alebo je presne nula.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Ak používateľ zadá ako vstup číslo <strong>-5</strong> program vypíše <strong>negatívne</strong>, pre číslo <strong>98</strong> vypíše program <strong>pozitívne</strong> a pre vstup <strong>0</strong> vypíše <strong>nula</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int cislo;
+
+    printf(&#34;Zadajte číslo: &#34;);
+    scanf(&#34;%d&#34;, &amp;cislo);
+
+    if (cislo &lt; 0) {
+        printf(&#34;negatívne&#34;, cislo);
+    } else if (cislo &gt; 0) {
+        printf(&#34;pozitívne&#34;, cislo);
+    } else if (cislo == 0) {
+        printf(&#34;nula&#34;, cislo);
+    }
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -64,6 +100,23 @@
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý zistí či je zadané číslo párne alebo nepárne. Čísla môže zadať používateľ štandardným vstupom. Program vypíše zistenie slovom <em>párne</em> alebo <em>nepárne</em> používateľovi.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Ak používateľ zadá ako vstup číslo <strong>24</strong>, program vypíše <strong>párne</strong>, ak používateľ zadá číslo <strong>59</strong> program vypíše <strong>nepárne</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int a;
+
+    printf(&#34;Zadajte číslo: &#34;);
+    scanf(&#34;%d&#34;, &amp;a);
+    if (a % 2 == 0) {
+        printf(&#34;párne&#34;);
+    } else {
+        printf(&#34;nepárne&#34;);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -74,6 +127,32 @@
 </aside>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Ak používateľ zadá ako vstup <strong>2016</strong> tak program vypíše <strong>priestupný</strong>, pre zadaný rok <strong>2011</strong> program vypíše <strong>nie je priestupný</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int rok;
+
+    printf(&#34;Zadajte rok: &#34;);
+    scanf(&#34;%d&#34;, &amp;rok);
+
+    if(rok % 4 == 0){
+        if(rok % 100 == 0) {
+            if(rok % 400 == 0) {
+                printf(&#34;priestupny&#34;);
+            } else {
+                printf(&#34;nepriestupny&#34;);
+            }
+        } else {
+            printf(&#34;priestupny&#34;);
+        }
+    } else {
+        printf(&#34;nepriestupny&#34;);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -82,6 +161,28 @@
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypíše koľko kalendárnych dní má mesiac. Používateľ cez štandardný vstup zadá číslo mesiaca (1-12) a program používateľovi vypíše koľko kalendárnych dní má zadaný mesiac. Pre implementáciu programu <strong>požite maximálne 3 podmienky pre výrazy if a else if</strong> a <strong>použite logické operátory</strong>.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Ak používateľ zadá ako vstup <strong>5</strong> program vypíše číslo <strong>31</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int mesiac;
+
+    printf(&#34;Zadajte mesiac: &#34;);
+    scanf(&#34;%d&#34;, &amp;mesiac);
+
+    if(mesiac == 1 || mesiac == 3 || mesiac == 5 || mesiac == 7 || mesiac == 8 || mesiac == 10 || mesiac == 11){
+        printf(&#34;31&#34;);
+    } else if (mesiac == 4 || mesiac == 6 || mesiac == 9 || mesiac == 11) {
+        printf(&#34;30&#34;);
+    } else if (mesiac == 2) {
+        printf(&#34;28 (v priestupný rok 29)&#34;);
+    } else {
+        printf(&#34;nezadali ste platný mesiac&#34;);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -98,6 +199,45 @@
 <p>Pre finálnu sumu <strong>sa vzťahuje daň 20%</strong>, ktorá je pridaná k finálnej sume.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Ak používateľ zadá spotrebu elektrickej energie <strong>300 jednotiek</strong> tak finálna cena po zdanení bude <strong>354€</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    float units;
+
+    printf(&#34;Zadajte vašu spotrebu elektriny: &#34;);
+    scanf(&#34;%f&#34;, &amp;units);
+
+    float price = 0;
+    if (units &lt; 50) {
+        printf(&#34;%.2f€&#34;, 0.5 * units * 1.2);
+        return 0;
+    }
+    price += 25; // pretože 50 * 0.25
+    units -= 50;
+
+    if (units - 100 &lt;= 0) {
+        price += 0.75 * units;
+        printf(&#34;%.2f€&#34;, price * 1.2);
+        return 0;
+    }
+    price += 75; // pretože 100 * 0.75
+    units -= 100;
+
+    if (units - 100 &lt;= 0) {
+        price += 1.2 * units;
+        printf(&#34;%.2f€&#34;, price * 1.2);
+        return 0;
+    }
+    price += 120; // pretože 100 * 1.2
+    units -= 100;
+
+    price += 1.5 * units;
+    printf(&#34;%.2f€&#34;, price * 1.2);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -106,6 +246,26 @@
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypíše názov dňa v týždni pre zadané číslo. Číslo indexu dňa v týždni zadá používateľ štandardným vstupom. Pre implementáciu <strong>môžte použiť iba jeden if výraz</strong>. (Skúste nepoužiť switch výraz).</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Pre vstup <strong>1</strong> od používateľa program vypíše <strong>Utorok</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+char DAY_OF_WEEK[7][10] = {&#34;Pondelok&#34;, &#34;Utorok&#34;, &#34;Streda&#34;, &#34;Štvrtok&#34;, &#34;Piatok&#34;, &#34;Sobota&#34;, &#34;Nedeľa&#34;};
+
+int main() {
+    int day;
+
+    printf(&#34;Zadajte poradové číslo dňa (začínajúce 0): &#34;);
+    scanf(&#34;%d&#34;, &amp;day);
+
+    if (day &gt;= 0 &amp;&amp; day &lt; 7) {
+        printf(&#34;%s&#34;, DAY_OF_WEEK[day]);
+    } else {
+        printf(&#34;Musíte zadať číslo medzi 0 a 6 vrátane&#34;);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>

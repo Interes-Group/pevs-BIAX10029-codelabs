@@ -48,6 +48,22 @@
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypíše na obrazovku čísla <em>od 1 po N</em>. Hodnotu <em>N</em> zadaná používateľ cez štandardný vstup.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Pre číslo <strong>10</strong> na vstupe program vypíše postupnosť <strong>1 2 3 4 5 6 7 8 9 10</strong>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+
+    printf(&#34;Zadajte číslo: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    for (int i = 1; i &lt;= n; i++) {
+        printf(&#34;%d &#34;, i);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -60,6 +76,24 @@
 <li>Pre zadanie <strong>N = 5</strong> vypíše program na obrazovku čísla <strong>2 4 6 8 10</strong>, každé na nový riadok.</li>
 <li>Pre zadanie <strong>N = 10</strong> vypíše program na obrazovku čísla <strong>2 4 6 8 10 12 14 16 18 20</strong>, každé na nový riadok</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+
+    printf(&#34;Zadajte číslo: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    for (int i = 1; i &lt;= n * 2; i++) {
+        if (i % 2 == 0) {
+            printf(&#34;%d\n&#34;, i);
+        }
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -71,6 +105,24 @@
 <li>Program pre <strong>n = 3</strong> vypíše hodnotu <strong>14</strong>, pretože <strong>14 = 1^2 + 2^2 + 3^2</strong></li>
 <li>Program pre <strong>n = 5</strong> vypíše hodnotu <strong>55</strong>, pretože <strong>55 = 1^2 + 2^2 + 3^2 + 4^2 + 5^2</strong></li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+
+    printf(&#34;Zadajte číslo: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    int sum = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        sum += i * i;
+    }
+    printf(&#34;%d&#34;, sum);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -101,6 +153,25 @@
 <li>-4 (lebo štvrtý člen postupnosti je tretí člen + diferencia = -1 + -3 = -4)</li>
 </ul>
 <p>Keďže N = 4, vypíšeme len 4 členy postupnosti.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int a0, d, n;
+
+    printf(&#34;Zadajte parametre aritmetickej postupnosti a0 d n (čísla musia byť oddelené medzerou): &#34;);
+    scanf(&#34;%d %d %d&#34;, &amp;a0, &amp;d, &amp;n);
+
+    printf(&#34;%d\n&#34;, a0);
+    int previous = a0;
+    for (int i = 0; i &lt; n-1; i++) {
+        previous += d;
+        printf(&#34;%d\n&#34;, previous);
+    }
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -140,6 +211,36 @@
 </code></pre>
 <aside class="special"><p> Pre zalomenie reťazca znakov do nového riadku vo funkcii printf môžte použiť znak ‘\n&#39;.</p>
 </aside>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+
+    printf(&#34;Zadajte veľkosť mriežky: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    for (int i = 0; i &lt; n*5; i++) {
+        if (i % 5 == 0) {
+            for (int j = 0; j &lt; n; j++) {
+                printf(&#34;+ - - - - &#34;);
+            }
+            printf(&#34;+\n&#34;);
+        } else {
+            for (int j = 0; j &lt; n; j++) {
+                printf(&#34;|         &#34;);
+            }
+            printf(&#34;|\n&#34;);
+        }
+    }
+    for (int j = 0; j &lt; n; j++) {
+        printf(&#34;+ - - - - &#34;);
+    }
+    printf(&#34;+\n&#34;);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -150,6 +251,24 @@
 </aside>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Spustenie programu s parametrami 2 a 5 vráti hodnotu 10.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b;
+
+    printf(&#34;Zadajte dve čísla oddelené medzerou: &#34;);
+    scanf(&#34;%d %d&#34;, &amp;a, &amp;b);
+
+    int r = 0;
+    for (int i = 0; i &lt; b; i++) {
+        r += a;
+    }
+    printf(&#34;%d&#34;, r);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -163,6 +282,25 @@
 1 2 3
 1 2 3 4
 1 2 3 4 5
+</code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+
+    printf(&#34;Zadajte číslo: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    for(int i=1; i &lt;= n; i++){
+        for(int j=1; j &lt;= i; j++){
+            printf(&#34;%d &#34;,j);
+        }
+        printf(&#34;\n&#34;);
+    }
+
+    return 0;
+}
 </code></pre>
 
 
@@ -178,6 +316,8 @@
 <li>Spustenie programu so vstupnými číslami 2 a 5 vypíše hodnotu 32.</li>
 <li>Spustenie programu so vstupnými číslami 3 a 4 vypíše hodnotu 81.</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C"></code></pre>
 
 
       </google-codelab-step>
@@ -198,6 +338,8 @@
 </code></pre>
 <aside class="special"><p> Pekné odsadenie textu môžete dostať pomocou ukončovacieho znaku výpisu ‘\t‘ (tabulátor – pre jeho použitie je nutné ho uviesť do úvodzoviek/apostrofov).</p>
 </aside>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C"></code></pre>
 
 
       </google-codelab-step>
