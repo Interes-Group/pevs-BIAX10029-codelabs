@@ -34,11 +34,46 @@ Celý program napíšte v hlavnej funkcií _main_. Výsledok súčtu vypíšte n
 
 Očakávaný výsledok je číslo 55.
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    int sum = 0;
+    for (int i = 1; i <= 10; ++i) {
+        sum += i;
+    }
+    printf("sum 1-10 = %d", sum);
+
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 4.2
 
 Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, v ktorom zapúzdrite funkciu súčtu z úlohy 4.1 do funkcie
 _int suma()_ . Funkciu zavolajte z hlavnej funkcie _main_, aby sa spustila. Výsledok, ktorý vráti funkcia vypíšte na obrazovku používateľovi.
+
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int sum(){
+    int sum = 0;
+    for (int i = 1; i <= 10; ++i) {
+        sum += i;
+    }
+    printf("sum 1-10 = %d", sum);
+}
+
+int main() {
+    sum();
+    return 0;
+}
+```
 
 <!-- ------------------------ -->
 ## Úloha 4.3
@@ -55,6 +90,27 @@ Všimnite si, že pre parameter s hodnotou **10** sa program správa rovnako ako
 - pre **vstup 13** funkcia vráti číslo **91**
 - pre **vstup 7** funkcia vráti číslo **28**
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int sum(int limit){
+    int sum = 0;
+    for (int i = 1; i <= limit; ++i) {
+        sum += i;
+    }
+    printf("sum 1-%d = %d\n", limit, sum);
+}
+
+int main() {
+    sum(5);
+    sum(13);
+    sum(7);
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 4.4
 
@@ -69,4 +125,47 @@ Pre voľbu parametra **k = 1** sa program správa rovnako ako predošlá verzia 
 - pre **vstupy K = 1, N = 7** funkcia vráti číslo **28**
 - pre **vstupy K = 3, N = 5** funkcia vráti číslo **225**
 
+### Riešenie
 
+```C
+#include <stdio.h>
+
+int sum(int k, int n) {
+    int suma = 0;
+    for (int i = 1; i <= n; ++i) {
+        int mocnina = 1;
+        for (int j = 0; j < k; j++) {
+            mocnina *= i;
+        }
+        suma += mocnina;
+    }
+    printf("súčet %d-tych mocnín čísel 1-%d = %d\n", k, n, suma);
+}
+
+int main() {
+    sum(1,7);
+    sum(3,5);
+    return 0;
+}
+```
+
+### Riešenie 2
+
+```C
+#include <stdio.h>
+#include <math.h>
+
+int sum(int k, int n) {
+    int suma = 0;
+    for (int i = 1; i <= n; ++i) {
+        suma += pow(i,k);
+    }
+    printf("súčet %d-tych mocnín čísel 1-%d = %d\n", k, n, suma);
+}
+
+int main() {
+    sum(1,7);
+    sum(3,5);
+    return 0;
+}
+```

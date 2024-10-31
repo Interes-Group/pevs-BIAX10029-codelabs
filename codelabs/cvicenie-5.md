@@ -48,6 +48,28 @@ Na tretie už o málo menej.
 Na štvrté prišli tí, ktorí sa chcú niečo naučiť. 
 ```
 
+### Riešenie
+
+```C
+#include <stdio.h>
+
+int main() {
+    FILE *file = fopen("data.txt", "r");
+    if (file == NULL) return 1;
+
+    int character_limit = 100;
+    char line[character_limit];
+    while (1) {
+        char *result = fgets(line, character_limit, file);
+        if (result == NULL) break;
+        printf("%s", line);
+    }
+
+    fclose(file);
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 5.2
 
@@ -78,6 +100,41 @@ Program by mal vytvoriť súbor _vypocty.txt_ s nasledovným obsahom:
 21 56 77
 ```
 
+### Riešenie
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int get_input(char *message) {
+    char input[100];
+    printf("%s", message);
+    scanf("%s", input);
+    if (input[0] == 'q') return INT_MIN;
+    return atoi(input);
+}
+
+int main() {
+    FILE *file = fopen("vypocty.txt", "w+");
+    if (file == NULL) return 1;
+
+    while (1) {
+        int a, b, result;
+        a = get_input("Zadajte prvé číslo pre súčet: ");
+        if(a == INT_MIN) break;
+        b = get_input("Zadajte druhé číslo pre súčet: ");
+        result = a + b;
+        printf("%d + %d = %d\n", a, b, result);
+        fprintf(file, "%d %d %d\n", a, b, result);
+        printf("-------------\n");
+    }
+
+    fclose(file);
+    return 0;
+}
+```
+
 <!-- ------------------------ -->
 ## Úloha 5.3
 
@@ -94,3 +151,53 @@ ako je v úlohe 5.2.
 
 > aside negative
 > Dávajte si pozor na mód pod ktorým otvárate súbor a na zatvorenie súboru pred skončením programu.
+
+### Riešenie
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int get_input(char *message) {
+    char input[100];
+    printf("%s", message);
+    scanf("%s", input);
+    if (input[0] == 'q') return INT_MIN;
+    return atoi(input);
+}
+
+void verify_file(FILE *file) {
+    int a, b, result;
+    int read = 0;
+    int line = 1;
+    while ((read = fscanf(file, "%d %d %d\n", &a, &b, &result)) != EOF) {
+        if (a + b != result) {
+            printf("Chyba na riadku %d. %d + %d != %d (správne %d)\n", line, a, b, result, a + b);
+        }
+        line++;
+    }
+    printf("Načítaných %d výpočtov zo súboru\n", line-1);
+}
+
+int main() {
+    FILE *file = fopen("../vypocty.txt", "a+");
+    if (file == NULL) return 1;
+
+    verify_file(file);
+
+    while (1) {
+        int a, b, result;
+        a = get_input("Zadajte prvé číslo pre súčet: ");
+        if (a == INT_MIN) break;
+        b = get_input("Zadajte druhé číslo pre súčet: ");
+        result = a + b;
+        printf("%d + %d = %d\n", a, b, result);
+        fprintf(file, "%d %d %d\n", a, b, result);
+        printf("-------------\n");
+    }
+
+    fclose(file);
+    return 0;
+}
+```

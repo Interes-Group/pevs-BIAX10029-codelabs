@@ -46,12 +46,41 @@
       <google-codelab-step label="Úloha 4.1" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý sčíta čísla od 1 do 10 a súčet vypíše na obrazovku. Celý program napíšte v hlavnej funkcií <em>main</em>. Výsledok súčtu vypíšte na obrazovku používateľovi.</p>
 <p>Očakávaný výsledok je číslo 55.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 10; ++i) {
+        sum += i;
+    }
+    printf(&#34;sum 1-10 = %d&#34;, sum);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
 
       <google-codelab-step label="Úloha 4.2" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, v ktorom zapúzdrite funkciu súčtu z úlohy 4.1 do funkcie <em>int suma()</em> . Funkciu zavolajte z hlavnej funkcie <em>main</em>, aby sa spustila. Výsledok, ktorý vráti funkcia vypíšte na obrazovku používateľovi.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int sum(){
+    int sum = 0;
+    for (int i = 1; i &lt;= 10; ++i) {
+        sum += i;
+    }
+    printf(&#34;sum 1-10 = %d&#34;, sum);
+}
+
+int main() {
+    sum();
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -65,6 +94,24 @@
 <li>pre <strong>vstup 13</strong> funkcia vráti číslo <strong>91</strong></li>
 <li>pre <strong>vstup 7</strong> funkcia vráti číslo <strong>28</strong></li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int sum(int limit){
+    int sum = 0;
+    for (int i = 1; i &lt;= limit; ++i) {
+        sum += i;
+    }
+    printf(&#34;sum 1-%d = %d\n&#34;, limit, sum);
+}
+
+int main() {
+    sum(5);
+    sum(13);
+    sum(7);
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -77,6 +124,45 @@
 <li>pre <strong>vstupy K = 1, N = 7</strong> funkcia vráti číslo <strong>28</strong></li>
 <li>pre <strong>vstupy K = 3, N = 5</strong> funkcia vráti číslo <strong>225</strong></li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int sum(int k, int n) {
+    int suma = 0;
+    for (int i = 1; i &lt;= n; ++i) {
+        int mocnina = 1;
+        for (int j = 0; j &lt; k; j++) {
+            mocnina *= i;
+        }
+        suma += mocnina;
+    }
+    printf(&#34;súčet %d-tych mocnín čísel 1-%d = %d\n&#34;, k, n, suma);
+}
+
+int main() {
+    sum(1,7);
+    sum(3,5);
+    return 0;
+}
+</code></pre>
+<h2 is-upgraded>Riešenie 2</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int sum(int k, int n) {
+    int suma = 0;
+    for (int i = 1; i &lt;= n; ++i) {
+        suma += pow(i,k);
+    }
+    printf(&#34;súčet %d-tych mocnín čísel 1-%d = %d\n&#34;, k, n, suma);
+}
+
+int main() {
+    sum(1,7);
+    sum(3,5);
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>

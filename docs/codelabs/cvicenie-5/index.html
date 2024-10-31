@@ -55,6 +55,25 @@ Na druhé už o niečo menej.
 Na tretie už o málo menej.
 Na štvrté prišli tí, ktorí sa chcú niečo naučiť.
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen(&#34;data.txt&#34;, &#34;r&#34;);
+    if (file == NULL) return 1;
+
+    int character_limit = 100;
+    char line[character_limit];
+    while (1) {
+        char *result = fgets(line, character_limit, file);
+        if (result == NULL) break;
+        printf(&#34;%s&#34;, line);
+    }
+
+    fclose(file);
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -76,6 +95,38 @@ Na štvrté prišli tí, ktorí sa chcú niečo naučiť.
 8 7 15
 21 56 77
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+int get_input(char *message) {
+    char input[100];
+    printf(&#34;%s&#34;, message);
+    scanf(&#34;%s&#34;, input);
+    if (input[0] == &#39;q&#39;) return INT_MIN;
+    return atoi(input);
+}
+
+int main() {
+    FILE *file = fopen(&#34;vypocty.txt&#34;, &#34;w+&#34;);
+    if (file == NULL) return 1;
+
+    while (1) {
+        int a, b, result;
+        a = get_input(&#34;Zadajte prvé číslo pre súčet: &#34;);
+        if(a == INT_MIN) break;
+        b = get_input(&#34;Zadajte druhé číslo pre súčet: &#34;);
+        result = a + b;
+        printf(&#34;%d + %d = %d\n&#34;, a, b, result);
+        fprintf(file, &#34;%d %d %d\n&#34;, a, b, result);
+        printf(&#34;-------------\n&#34;);
+    }
+
+    fclose(file);
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -86,6 +137,53 @@ Na štvrté prišli tí, ktorí sa chcú niečo naučiť.
 <p>Program následne pokračuje v rovnakej činnosti ako v úlohe 5.2 s opýtaním sa používateľa o dve čísla a vypočíta ich súčet. Výpočet potom zapíše na koniec súboru. Existujúce dáta nesmú byť prepísané. Formát súboru <em>vypocty.txt</em> musí byť zachovaný ako je v úlohe 5.2.</p>
 <aside class="warning"><p> Dávajte si pozor na mód pod ktorým otvárate súbor a na zatvorenie súboru pred skončením programu.</p>
 </aside>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+int get_input(char *message) {
+    char input[100];
+    printf(&#34;%s&#34;, message);
+    scanf(&#34;%s&#34;, input);
+    if (input[0] == &#39;q&#39;) return INT_MIN;
+    return atoi(input);
+}
+
+void verify_file(FILE *file) {
+    int a, b, result;
+    int read = 0;
+    int line = 1;
+    while ((read = fscanf(file, &#34;%d %d %d\n&#34;, &amp;a, &amp;b, &amp;result)) != EOF) {
+        if (a + b != result) {
+            printf(&#34;Chyba na riadku %d. %d + %d != %d (správne %d)\n&#34;, line, a, b, result, a + b);
+        }
+        line++;
+    }
+    printf(&#34;Načítaných %d výpočtov zo súboru\n&#34;, line-1);
+}
+
+int main() {
+    FILE *file = fopen(&#34;../vypocty.txt&#34;, &#34;a+&#34;);
+    if (file == NULL) return 1;
+
+    verify_file(file);
+
+    while (1) {
+        int a, b, result;
+        a = get_input(&#34;Zadajte prvé číslo pre súčet: &#34;);
+        if (a == INT_MIN) break;
+        b = get_input(&#34;Zadajte druhé číslo pre súčet: &#34;);
+        result = a + b;
+        printf(&#34;%d + %d = %d\n&#34;, a, b, result);
+        fprintf(file, &#34;%d %d %d\n&#34;, a, b, result);
+        printf(&#34;-------------\n&#34;);
+    }
+
+    fclose(file);
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
