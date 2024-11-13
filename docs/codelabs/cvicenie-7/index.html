@@ -1,0 +1,226 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Cvičenie 7 - Pointer</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="cvicenie-7"
+                  title="Cvičenie 7 - Pointer"
+                  environment="web"
+                  feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+
+      <google-codelab-step label="Úvod" duration="0">
+        <p>Náplňou tohto cvičenia bude najmä si osvojiť komplexnú problematiku pointerov ich správanie a využitie pri riešení problémov.</p>
+<p>Pri týchto cvičenia je dôležité si uvedomiť kedy sa pracuje s hodnotou a kedy s referenciou t.j. s pointerom (adresou) na hodnotu.</p>
+<h2 is-upgraded>Obsah</h2>
+<ul>
+<li>základné práce s pointermi</li>
+<li>práca so statickými poliami</li>
+<li>porovnanie volaní funkcií hodnotou a volaním referenciou</li>
+</ul>
+<aside class="warning"><p> Ak používate ako vývojové prostredie lokálny a editor a následnú kompiláciu cez terminál. Použite príkaz:</p>
+<pre><code language="language-shell" class="language-shell">gcc -std=c11 -o program -Wall -Wextra main.c
+</code></pre>
+</aside>
+<p>Pre vypracovanie týchto úloh odporúčam mať funkčné lokálne vývojové prostredie (VS Code, CLion a pod.) a kompilátor jazyka C.</p>
+<aside class="warning"><p> Ak v rámci predpísaných výstupov sú uvedené slová medzi znakmi <code><</code> a <code>></code> ide o placeholder pre skutočnú hodnotu, ktorú musí dosadiť program.</p>
+</aside>
+<p>Riešenia na jednotlivé úlohy budú uverejnené najskôr.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.1" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje premenné typu <em>int m</em>, <em>n</em> a <em>o</em> a pointer <em>z</em>, ktorý je pointer na premennú <em>m</em>. Premennej m priraďte ľubovolnú hodnotu.</p>
+<p>Program by mal vypísať na štandardný výstup následné reťazce:</p>
+<pre><code language="language-text" class="language-text"> z stores the address of m  = &lt;aktuálna adresa&gt;
+
+ *z stores the value of m = &lt;aktuálna hodnota&gt;
+
+ &amp;m is the address of m = &lt;aktuálna adresa&gt;
+
+ &amp;n stores the address of n = &lt;aktuálna adresa&gt;
+
+ &amp;o  stores the address of o = &lt;aktuálna adresa&gt;
+
+ &amp;z stores the address of z = &lt;aktuálna adresa&gt;
+</code></pre>
+<aside class="special"><p> Všimnite si, že ak program spustíte opakovane adresy premenných sa menia.</p>
+</aside>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.2" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje premennú typu <em>int m</em> a <em>pointer ab</em>. Napíšte program tak aby hodnota premennej <em>m</em> menila tak aby vyhovovala nižšie uvedeným výpisom a aby pointer <em>ab</em> ukazoval na hodnotu premennej <em>m</em>.</p>
+<p>Program by mal vypísať na štandardný výstup nasledovné:</p>
+<pre><code language="language-text" class="language-text">Address of m : &lt;adresa&gt;
+Value of m : 29
+
+Now ab is assigned with the address of m.
+Address of pointer ab : &lt;adresa&gt;
+Content of pointer ab : 29
+
+The value of m assigned to 34 now.
+Address of pointer ab : &lt;adresa&gt;
+Content of pointer ab : 34
+
+The pointer variable ab is assigned with the value 7 now.
+Address of m : &lt;adresa&gt;
+Value of m : 7
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.3" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý pomocou operátorov <code>&</code> a <code>*</code> vypíše nižšie uvedené reťazce. Program definuje premennú <em>int m</em>, <em>float f</em> a <em>char c</em> inicializované na nasledovné hodnoty:</p>
+<ul>
+<li>m = 300</li>
+<li>f = 256.450001</li>
+<li>c = &#34;z&#34;</li>
+</ul>
+<aside class="special"><p> Pamätajte, že operátor &amp; je na získanie adresy premennej a operátor * na získanie hodnoty uloženej na adrese.</p>
+</aside>
+<p>Program by mal vypísať na štandardný výstup nasledovné:</p>
+<pre><code language="language-text" class="language-text">m = &lt;hodnota&gt;
+fx = &lt;hodnota&gt;
+cht = &lt;hodnota&gt;
+
+Using &amp; operator :
+-----------------------
+address of m = &lt;adresa&gt;
+address of fx = &lt;adresa&gt;
+address of cht = &lt;adresa&gt;
+
+Using &amp; and * operator :
+-----------------------------
+value at address of m = &lt;hodnota&gt;
+value at address of fx = &lt;hodnota&gt;
+value at address of cht = &lt;hodnota&gt;
+
+Using only pointer variable :
+----------------------------------
+address of m = &lt;adresa&gt;
+address of fx = &lt;adresa&gt;
+address of cht = &lt;adresa&gt;
+
+Using only pointer operator :
+----------------------------------
+value at address of m = &lt;hodnota&gt;
+value at address of fx= &lt;hodnota&gt;
+value at address of cht= &lt;hodnota&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.4" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý obsahuje funkciu ,ktorá spočíta dve čísla. Funkciu implementujte tak aby prijímala ako argumenty dva pointre typu <code>int*</code> (t.j. volanie referenciou - call by reference) a vrátila číslo typu <em>int</em> (pozor nie pointer!).</p>
+<p>Funkciu následne zavolajte s rôznymi vstupmi.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<ul>
+<li>pre čísla 5 a 6 program vypíše:</li>
+</ul>
+<pre><code language="language-text" class="language-text">Function called with pointer &lt;adresa&gt; with value 5 and pointer &lt;adresa&gt; with value 6.
+The sum of the numbers is 11.
+</code></pre>
+<ul>
+<li>pre čísla 74 a -23 program vypíše:</li>
+</ul>
+<pre><code language="language-text" class="language-text">Function called with pointer &lt;adresa&gt; with value 74 and pointer &lt;adresa&gt; with value -23.
+The sum of the numbers is 51.
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.5" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje pole typu <code>int[]</code> o veľkosti <em>5</em>. Prvky poľa definujte pri jeho inicializácii (tzv. statické pole).</p>
+<p>Program postupne vypíše všetky prvky pola, kde pre každý prvok vypíše na štandardný výstup reťazec:</p>
+<p><code>&lt;index prvku>. element of the array &lt;adresa poľa> has address &lt;adresa prvku> with value &lt;hodnota prvku></code></p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Pre pole <code>[9,8,5,1,3]</code> program vypíše:</p>
+<pre><code language="language-text" class="language-text">0. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec1 with value 9
+1. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec2 with value 8
+2. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec3 with value 5
+3. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec4 with value 1
+4. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec5 with value 3
+</code></pre>
+<aside class="special"><p> Všimnite si, že adresy elementov poľa ídu v sekvencií za sebou a adresa 0. elementu je taktiež adresa poľa.</p>
+</aside>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.6" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje funkciu pre výpočet dĺžky reťazca. Funkcia má jeden argument typu <code>char*</code> , ktorý vyjadruje reťacez znakov. Funkcia vracia hodnotu typu <code>int</code>, ktorá sa rovná počtu znakov vo vstupnom reťazci. Pre implementáciu <strong>nepoužite</strong> knižnicu <em>&lt;string.h&gt;</em> ani žiadnu inú okrem <em>&lt;stdio.h&gt;</em>.</p>
+<p>Pri implementácií použitie inkrementáciu pointrov, resp. pričítanie čísla (<em>int</em>) k pointru.</p>
+<aside class="special"><p> Pamätajte, že každý reťazec je ukončený znakom <em>\0</em>.</p>
+</aside>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<ul>
+<li>pre vstupný reťacez &#34;Milan&#34; funkcia vráti 5</li>
+<li>pre vstupný reťacez &#34;Cvicenie7&#34; funkcia vráti 9</li>
+<li>pre vstupný reťacez &#34;&#34; funkcia vráti 0</li>
+</ul>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.7" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje statické pole ľubovolnej veľkosti typu <code>int[]</code> a následne vypíše všetky jeho elementy odzadu, t.j. od posledného k prvému, t.j. od <em>indexu &lt;dĺžka poľa&gt; - 1</em> po <em>index 0</em>. Každý element poľa je vypísaný do nového riadku.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Pre pole <code>[9,8,5,1,3]</code> program vypíše:</p>
+<pre><code language="language-text" class="language-text">3
+1
+5
+8
+9
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 7.8" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý zoradí hodnoty staticky definovaného pola typu <code>int[]</code> od najmenšej hodnoty po najväčšiu. Elementy poľa sú zoraďované v definovanom poli, <strong>nevytvárajte</strong> nové pole. Po zoradení program vypíše postupne všetky elementy poľa za sebou v jednom riadku.</p>
+<aside class="special"><p> Pre prehodenie dvoch čísel je potrebná tretia pomocná premenná.</p>
+</aside>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Pre pole <code>[9,8,5,1,3]</code> program vypíše:</p>
+<pre><code language="language-text" class="language-text">1, 3, 5, 8, 9
+</code></pre>
+<h2 is-upgraded>Pomôcka</h2>
+<p>Skúste najprv prísť na implementáciu bez tejto pomoci. Ak by ste sa však nevedeli pohnúť <a href="https://www.w3resource.com/w3r_images/c-pointer-exercise-14-image.png" target="_blank">obrázok na tomto odkaze opisuje algoritmus zoradenia</a>.</p>
+
+
+      </google-codelab-step>
+
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
