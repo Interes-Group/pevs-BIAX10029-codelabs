@@ -31,7 +31,7 @@ Pre vypracovanie týchto úloh odporúčam mať funkčné lokálne vývojové pr
 > aside negative
 > Ak v rámci predpísaných výstupov sú uvedené slová medzi znakmi `<` a `>` ide o placeholder pre skutočnú hodnotu, ktorú musí dosadiť program.
 
-Riešenia na jednotlivé úlohy budú uverejnené najskôr.
+Riešenia na jednotlivé úlohy budú uverejnené neskôr.
 
 <!-- ------------------------ -->
 ## Úloha 7.1
