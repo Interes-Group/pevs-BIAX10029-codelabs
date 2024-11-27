@@ -76,7 +76,87 @@
       </google-codelab-step>
 
       <google-codelab-step label="Odovzdanie" duration="0">
-        <p>Vypracovanie zadania odovzdajte do určeného miesta v MS Teams (Assignments &gt; Zadanie 1 - Hádanie čísla). Odovzdávajte iba súbor <em>main.c</em> so zdrojovým kódom programu. Vypracovanie je nutné odovzdať do <strong>31.10.2024 23:59</strong>. Neodovzdanie je hodnotené 0 bodmi. V prípade otázok, alebo technických problémov ma môžte kontaktovať na MS Teams alebo emailom milan.mladoniczky@paneurouni.com .</p>
+        <p>Vypracovanie zadania odovzdajte do určeného miesta v MS Teams (Assignments &gt; Zadanie 1 - Hádanie čísla). Odovzdávajte iba súbor <em>main.c</em> so zdrojovým kódom programu. Vypracovanie je nutné odovzdať do <strong>31.10.2024 23:59</strong>. Neodovzdanie je hodnotené 0 bodmi. V prípade otázok, alebo technických problémov ma môžte kontaktovať na MS Teams alebo emailom.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Riešenie" duration="0">
+        <p>Uvedené riešenie je len ilustratívne, samozrejme existuje mnoho možných riešení.</p>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define TRUE 1
+#define FALSE 0
+
+int generate_number(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
+
+void log_result(int secret, int guesses, char *result) {
+    FILE *log = fopen(&#34;hadaj_cislo.log&#34;, &#34;a+&#34;);
+    if (log) {
+        fprintf(log, &#34;%d %d %s\n&#34;, secret, guesses, result);
+        fclose(log);
+    }
+}
+
+int main() {
+    int lower_bound = 0;
+    int upper_bound = 0;
+    int secret_number;
+
+    printf(&#34;Vitaj v hre &#39;Uhádni tajomné číslo&#39;!\n&#34;);
+    printf(&#34;Po zadaní hraníc intervalu bude vygenerované náhodné číslo v zadanom intervale, ktoré následne musíš uhádnuť.\n&#34;);
+    printf(&#34;Skús minimalizovať počet pokusov na uhádnutie čísla. Ak ťa to už nebaví, namiesto zadania čísla zadaj znak &#39;Q&#39;.\n\n&#34;);
+
+    printf(&#34;Zadaj interval, v ktorom sa bude nachádzať tajomné číslo:\n&#34;);
+
+    while (upper_bound - lower_bound &lt; 10) {
+        printf(&#34;Rozsah intervalu musí byť aspoň 10! Skús zadať hranice intervalu znovu\n&#34;);
+        printf(&#34;Dolné ohraničenie intervalu: &#34;);
+        scanf(&#34;%d&#34;, &amp;lower_bound);
+        printf(&#34;Horné ohraničenie intervalu: &#34;);
+        scanf(&#34;%d&#34;, &amp;upper_bound);
+    }
+
+    printf(&#34;\n&#34;);
+    secret_number = generate_number(lower_bound, upper_bound);
+
+    int number_of_guesses = 0;
+    char *result;
+    while (TRUE) {
+        int guess;
+        char input[25];
+        printf(&#34;Aké je tajomné číslo? &#34;);
+        scanf(&#34;%s&#34;, input);
+        if (input[0] == &#39;Q&#39; || input[0] == &#39;q&#39;) {
+            printf(&#34;\nVzdal si sa. Škoda kámo :/ \n&#34;);
+            printf(&#34;Vydržal si %d pokusov\n&#34;, number_of_guesses);
+            result = &#34;neuhadol&#34;;
+            break;
+        }
+        guess = atoi(input);
+        if (secret_number == guess) {
+            printf(&#34;\nGratulujem uhádol si tajomné číslo!!!\n&#34;);
+            printf(&#34;Uhádnutie ti zabralo %d pokusy\n&#34;, number_of_guesses);
+            result = &#34;uhadol&#34;;
+            break;
+        } else if (guess &lt; lower_bound || guess &gt; upper_bound) {
+            printf(&#34;Tvoj odhad musí spadať do zadaného intervalu %d - %d\n&#34;, lower_bound, upper_bound);
+        } else if (secret_number &gt; guess) {
+            printf(&#34;Tajomné číslo je väčšie ako tvoj odhad.\n&#34;);
+        } else if (secret_number &lt; guess) {
+            printf(&#34;Tajomné číslo je menšie ako tvoj odhad.\n&#34;);
+        }
+        number_of_guesses++;
+    }
+
+    log_result(secret_number, number_of_guesses, result);
+
+    return 0;
+}
+</code></pre>
 
 
       </google-codelab-step>
