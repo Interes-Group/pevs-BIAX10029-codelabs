@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-27T23:46:13+01:00",
+  "id": "cvicenie-9",
+  "duration": 0,
+  "title": "Cvičenie 9 - Štruktúry",
+  "authors": "Milan Mladoniczky",
+  "summary": "Cvičenie 9 Štruktúry",
+  "source": "cvicenie-9.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "cvicenie"
+  ],
+  "tags": [
+    "beginner"
+  ],
+  "feedback": "https://github.com/interes-group/pevs-BIAX10029-codelabs/issues",
+  "url": "cvicenie-9"
+}

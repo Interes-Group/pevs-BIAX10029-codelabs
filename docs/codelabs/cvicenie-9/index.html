@@ -1,0 +1,199 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Cvičenie 9 - Štruktúry</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="cvicenie-9"
+                  title="Cvičenie 9 - Štruktúry"
+                  environment="web"
+                  feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+    
+      <google-codelab-step label="Úvod" duration="0">
+        <p>Náplňou týchto úloh je precvičiť si prácu so štruktúrami v jazyku C. Úlohy sú definované pre vyskúšanie si štruktúr v rôznych prípadoch použitia a práce s nimi.</p>
+<p>Pri vypracovaní úloh použite všetky doterajšie znalosti, hlavne z tématiky polí a alokovania pamäte.</p>
+<h2 is-upgraded>Obsah</h2>
+<ul>
+<li>definovanie štruktúry</li>
+<li>inicializácie štruktúry</li>
+<li>práca s členmi štruktúry</li>
+</ul>
+<aside class="warning"><p> Ak používate ako vývojové prostredie lokálny a editor a následnú kompiláciu cez terminál. Použite príkaz:</p>
+<pre><code language="language-shell" class="language-shell">gcc -std=c11 -o program -Wall -Wextra main.c
+</code></pre>
+</aside>
+<p>týchto úloh odporúčam mať funkčné lokálne vývojové prostredie (VS Code, CLion a pod.) a kompilátor jazyka C.</p>
+<aside class="warning"><p> Nezabudnite každú alokovanú pamäť uvoľniť volaním funkcie <code>free</code> ! Je dôležité si po sebe vždy upratať.</p>
+</aside>
+<p>Riešenia na jednotlivé úlohy budú uverejnené neskôr.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Úloha 9.1" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vytvorí štruktúru na reprezentáciu študenta. Táto štruktúra by mala obsahovať nasledujúce položky: <em>meno</em> (pole znakov), <em>vek</em> (celé číslo), <em>priemerný prospech</em> (desatinné číslo). Program by mal načítať údaje študentov, vypočítať priemerný vek a priemerný prospech všetkých študentov a tieto hodnoty vypísať.</p>
+<p>Vstupy programu môžu byť zadané zo štandardného vstupu alebo načítané zo súboru.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Pre nasledujúce vstupy programu:</p>
+<pre><code language="language-text" class="language-text">1. Študent
+Meno: Ján 
+Vek: 20 
+Priemerný prospech: 1.5
+---
+2. Študent
+Meno: Petra 
+Vek: 22 
+Priemerný prospech: 1.8
+---
+3. Študent
+Meno: Milan 
+Vek: 19 
+Priemerný prospech: 2.0
+---
+</code></pre>
+<p>Program vypíše na štandardný výstup nasledovný výstup:</p>
+<pre><code language="language-text" class="language-text">Sumár študentov:
+Priemerný vek: 20.33 Priemerný prospech: 1.77
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Úloha 9.2" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vytvorí štruktúru na reprezentáciu zamestnanca. Štruktúra by mala obsahovať <em>meno</em> (pole znakov), <em>identifikačné číslo</em> (celé číslo) a <em>plat</em> (desatinné číslo). Program by mal načítať údaje pre niekoľko zamestnancov, zoradiť ich podľa platu zostupne a vypísať zoznam zamestnancov spolu s ich platmi. Následne program vypíše priemerný plat zamestnancov.</p>
+<p>Údaje o zamestnancoch načítajte zo súboru, kde na jednom riadku je definovaný jeden zamestnanec a hodnoty na riadku sú oddelené medzerou: <code>ID Meno Plat</code></p>
+<p>Cestu k súboru načítajte od používateľa zo štandardného vstupu na začiatku programu.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Program pre vstupný súbor:</p>
+<pre><code language="language-text" class="language-text">101 Anna 2500.50
+102 Peter 3000.75
+103 Lucia 2800.00
+</code></pre>
+<p>vypíše nasledovný text na výstupe:</p>
+<pre><code language="language-text" class="language-text">102 Peter 3000.75
+103 Lucia 2800.00
+101 Anna 2500.50
+---
+Priemerný plat: 2767.08
+</code></pre>
+<h2 is-upgraded>Bonus</h2>
+<p>Skúste upraviť výpis tak aby mal formát tabuľky. Nezabudnite na správne zarovnanie stĺpcov. Takýto výstup by mohol vyzerať nasledovne:</p>
+<pre><code language="language-text" class="language-text">|ID  |Meno  |Plat    |
+|----|------|--------|
+|102 |Peter |3000.75 |
+|103 |Lucia |2800.00 |
+|101 |Anna  |2500.50 |
+---
+Priemerný plat: 2767.08
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="🗓️ Úloha 9.3" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje štruktúru na reprezentáciu dátumu s položkami <em>deň</em>, <em>mesiac</em> a <em>rok</em> (celé čísla). Program by mal umožniť používateľovi zadať dva dátumy kde jednotlivé hodnoty dátumov sú definované v jednom riadku oddelené medzerou a vypočítať rozdiel medzi nimi. Rozdieľ je vypísaný ako počet dní medzi dátumami.</p>
+<p>V programe ošetrite vstup od používateľa aby bolo možné zadať iba správny dátum (napríklad nie je možné zadať 31.2.) a zohľadňuje priestupné roky.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Priebeh programu môže vyzerať nasledovne:</p>
+<pre><code language="language-text" class="language-text">Prvý dátum: 1 1 2023
+Druhý dátum: 15 1 2024
+---
+Rozdiel dátumov: 376 dní
+</code></pre>
+<pre><code language="language-text" class="language-text">Prvý dátum: 28 2 2020
+Druhý dátum: 1 3 2020
+---
+Rozdiel dátumov: 2 dni
+</code></pre>
+<h2 is-upgraded>Bonus</h2>
+<p>Skúste upraviť výpis rozdielu dátumov tak aby uviedol pre používateľa rozdiel aj koľko prípadných rokov, mesiacov, či dní je medzi dátumami. Napríklad:</p>
+<ul>
+<li>vstup: 1.1.2023 a 15.1.2024 -&gt; 1 rok a 15 dní</li>
+<li>vstup: 1.1.2022 a 5.3.2022 -&gt; 2 mesiace a 5 dní</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="📚 Úloha 9.4" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vytvorí štruktúru na reprezentáciu knihy v knižnici. Štruktúra by mala obsahovať <em>názov</em> (pole znakov), <em>autora</em> (pole znakov) a <em>rok vydania</em> (celé číslo). Program by mal načítať údaje zo súboru kde je definovaná kniha na jednom riadku a hodnoty štruktúry sú oddelené bodkočiarkou. Vstupný súbor môže byť v rovnakom priečinku ako program a môže mať napevno definovaný názov v zdrojovom kóde. Program po úspešnom spracovaní súboru vypíše počet načítaných kníh. Program následne umožní zadať používateľovi rok a vypíše knihy, ktoré boli vydané v zadanom roku.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Vstupný súbor s knihami</p>
+<pre><code language="language-text" class="language-text">Programovanie v C;Kernighan &amp; Ritchie;1988  
+Moderné algoritmy;Jon Bentley;1990  
+Umenie programovania;Donald Knuth;1968  
+Štruktúra a interpretácia počítačových programov;Harold Abelson &amp; Gerald Jay Sussman;1985  
+Cvičenia z programovania;Brian Kernighan;1988  
+Algoritmy v C++;Robert Sedgewick;1990  
+Čistý kód;Robert C. Martin;2008  
+Pragmatický programátor;Andrew Hunt &amp; David Thomas;1999  
+Python pre začiatočníkov;Guido van Rossum;2000  
+Počítačová grafika;John F. Hughes &amp; James D. Foley;1995  
+</code></pre>
+<p>Priebeh programu môže byť nasledovný:</p>
+<pre><code language="language-text" class="language-text">Počet kníh v databáze: 10
+Zadajte rok vydania kníh: 1990
+
+Názov: Moderné algoritmy
+Autor: Jon Bentley
+Rok vydania: 1990
+---
+Názov: Algoritmy v C++
+Autor: Robert Sedgewick
+Rok vydania: 1990
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="⛓️‍💥 Úloha 9.5" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý implementuje jednoduchý zreťazený zoznam pomocou štruktúr. Každý prvok zoznamu by mal obsahovať celé kladné číslo a pointer na ďalší prvok. Program umožní používateľovi cez štandardný vstup zadať číslo prvku zoznamu. Po zadaní vstupu je nový prvok pridaný na koniec zoznamu a následne vypíše celý aktuálny zoznam a znova ponúkne používateľovi zadať ďalší prvok. Program končí ak používateľ na vstupe zadá hodnotu -1.</p>
+<aside class="warning"><p> Nezabudnite uvoľniť pamäť alokovanú pre jednotlivé prvky zoznamu na konci programu!</p>
+</aside>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Priebeh programu môže vyzerať nasledovne:</p>
+<pre><code language="language-text" class="language-text">---
+Zadajte hodnotu prvku: 1
+Aktuálny zoznam: 1
+---
+Zadajte hodnotu prvku: 85
+Aktuálny zoznam: 1, 85
+---
+Zadajte hodnotu prvku: 423
+Aktuálny zoznam: 1, 85, 423
+---
+Zadajte hodnotu prvku: -1
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
