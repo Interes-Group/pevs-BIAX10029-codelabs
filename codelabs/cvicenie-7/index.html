@@ -43,7 +43,7 @@
 <p>Pre vypracovanie týchto úloh odporúčam mať funkčné lokálne vývojové prostredie (VS Code, CLion a pod.) a kompilátor jazyka C.</p>
 <aside class="warning"><p> Ak v rámci predpísaných výstupov sú uvedené slová medzi znakmi <code><</code> a <code>></code> ide o placeholder pre skutočnú hodnotu, ktorú musí dosadiť program.</p>
 </aside>
-<p>Riešenia na jednotlivé úlohy budú uverejnené najskôr.</p>
+<p>Riešenia na jednotlivé úlohy budú uverejnené neskôr.</p>
 
 
       </google-codelab-step>
@@ -65,6 +65,55 @@
 </code></pre>
 <aside class="special"><p> Všimnite si, že ak program spustíte opakovane adresy premenných sa menia.</p>
 </aside>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    // Definícia premenných
+    int m, n, o;
+    int *z;
+
+    // Priradenie hodnôt
+    m = 42; // Ľubovoľná hodnota
+    z = &amp;m; // Pointer z ukazuje na premennú m
+
+    // Výpis požadovaných informácií
+    printf(&#34;z stores the address of m = %p\n&#34;, z);
+    printf(&#34;*z stores the value of m = %d\n&#34;, *z);
+    printf(&#34;&amp;m is the address of m = %p\n&#34;, &amp;m);
+    printf(&#34;&amp;n stores the address of n = %p\n&#34;, &amp;n);
+    printf(&#34;&amp;o stores the address of o = %p\n&#34;, &amp;o);
+    printf(&#34;&amp;z stores the address of z = %p\n&#34;, &amp;z);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Premenné a pointery:<ul>
+<li>m, n, a o sú premennej typu int.</li>
+<li>z je pointer na int, ktorý uchováva adresu premennej m.</li>
+</ul>
+</li>
+<li>Priradenie hodnôt:<ul>
+<li>Premennej m priraďujeme hodnotu 42 (môže byť ľubovoľná).</li>
+<li>Pointer z nastavujeme na adresu premennej m pomocou operátora &amp;.</li>
+</ul>
+</li>
+<li>Výpis:<ul>
+<li>Adresy a hodnoty sa vypisujú pomocou formátovacieho reťazca %p (pre pointery) a %d (pre hodnotu typu int).</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklady výstupu</h3>
+<p>Po spustení program môže byť výstup nasledovný (samozrejme adresy líšia medzi spusteniami):</p>
+<pre><code language="language-text" class="language-text">z stores the address of m = 0x7ffcb5e7914c
+*z stores the value of m = 42
+&amp;m is the address of m = 0x7ffcb5e7914c
+&amp;n stores the address of n = 0x7ffcb5e79148
+&amp;o stores the address of o = 0x7ffcb5e79144
+&amp;z stores the address of z = 0x7ffcb5e79138
+</code></pre>
 
 
       </google-codelab-step>
@@ -85,6 +134,81 @@ Content of pointer ab : 34
 
 The pointer variable ab is assigned with the value 7 now.
 Address of m : &lt;adresa&gt;
+Value of m : 7
+</code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    // Definícia premennej a pointeru
+    int m;
+    int *ab;
+
+    // Nastavenie počiatočnej hodnoty premennej m
+    m = 29;
+    printf(&#34;Address of m : %p\n&#34;, &amp;m);
+    printf(&#34;Value of m : %d\n&#34;, m);
+
+    // Nastavenie pointeru ab na adresu premennej m
+    ab = &amp;m;
+    printf(&#34;\nNow ab is assigned with the address of m.\n&#34;);
+    printf(&#34;Address of pointer ab : %p\n&#34;, ab);
+    printf(&#34;Content of pointer ab : %d\n&#34;, *ab);
+
+    // Zmena hodnoty m cez pointer
+    m = 34;
+    printf(&#34;\nThe value of m assigned to 34 now.\n&#34;);
+    printf(&#34;Address of pointer ab : %p\n&#34;, ab);
+    printf(&#34;Content of pointer ab : %d\n&#34;, *ab);
+
+    // Zmena hodnoty premennej m priamo cez pointer ab
+    *ab = 7;
+    printf(&#34;\nThe pointer variable ab is assigned with the value 7 now.\n&#34;);
+    printf(&#34;Address of m : %p\n&#34;, &amp;m);
+    printf(&#34;Value of m : %d\n&#34;, m);
+
+    return 0;
+}
+</code></pre>
+<h4 is-upgraded>Vysvetlenie</h4>
+<ol type="1">
+<li>Premenné a pointery:<ul>
+<li>m je premenná typu int.</li>
+<li>ab je pointer na int, ktorý ukazuje na adresu premennej m.</li>
+</ul>
+</li>
+<li>Počiatočné hodnoty:<ul>
+<li>Premenná m je inicializovaná hodnotou 29.</li>
+</ul>
+</li>
+<li>Pointer priraďuje adresu:<ul>
+<li>Pointer ab je nastavený na adresu premennej m pomocou operátora &amp;.</li>
+</ul>
+</li>
+<li>Zmena hodnoty m:<ul>
+<li>Hodnota m je priamo zmenená a výpis potvrdzuje adresu a obsah cez pointer.</li>
+</ul>
+</li>
+<li>Zmena cez pointer:<ul>
+<li>Hodnota premennej m je zmenená priamo pomocou pointera ab s použitím operátora dereferencie *.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<p>Pri spustení programu môže byť výstup nasledovný (adresy sa môžu líšiť podľa systému):</p>
+<pre><code language="language-text" class="language-text">Address of m : 0x7ffc7d9d314c
+Value of m : 29
+
+Now ab is assigned with the address of m.
+Address of pointer ab : 0x7ffc7d9d314c
+Content of pointer ab : 29
+
+The value of m assigned to 34 now.
+Address of pointer ab : 0x7ffc7d9d314c
+Content of pointer ab : 34
+
+The pointer variable ab is assigned with the value 7 now.
+Address of m : 0x7ffc7d9d314c
 Value of m : 7
 </code></pre>
 
@@ -129,6 +253,110 @@ value at address of m = &lt;hodnota&gt;
 value at address of fx= &lt;hodnota&gt;
 value at address of cht= &lt;hodnota&gt;
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    // Definícia a inicializácia premenných
+    int m = 300;
+    float f = 256.450001;
+    char c = &#39;z&#39;;
+
+    // Pointery na jednotlivé premenné
+    int *p_m = &amp;m;
+    float *p_f = &amp;f;
+    char *p_c = &amp;c;
+
+    // Výpis hodnôt premenných
+    printf(&#34;m = %d\n&#34;, m);
+    printf(&#34;fx = %.6f\n&#34;, f);
+    printf(&#34;cht = %c\n\n&#34;, c);
+
+    // Použitie operátora &amp;
+    printf(&#34;Using &amp; operator :\n&#34;);
+    printf(&#34;-----------------------\n&#34;);
+    printf(&#34;address of m = %p\n&#34;, &amp;m);
+    printf(&#34;address of fx = %p\n&#34;, &amp;f);
+    printf(&#34;address of cht = %p\n\n&#34;, &amp;c);
+
+    // Použitie operátorov &amp; a *
+    printf(&#34;Using &amp; and * operator :\n&#34;);
+    printf(&#34;-----------------------------\n&#34;);
+    printf(&#34;value at address of m = %d\n&#34;, *(&amp;m));
+    printf(&#34;value at address of fx = %.6f\n&#34;, *(&amp;f));
+    printf(&#34;value at address of cht = %c\n\n&#34;, *(&amp;c));
+
+    // Použitie iba pointerových premenných
+    printf(&#34;Using only pointer variable :\n&#34;);
+    printf(&#34;----------------------------------\n&#34;);
+    printf(&#34;address of m = %p\n&#34;, p_m);
+    printf(&#34;address of fx = %p\n&#34;, p_f);
+    printf(&#34;address of cht = %p\n\n&#34;, p_c);
+
+    // Použitie iba pointerových operátorov
+    printf(&#34;Using only pointer operator :\n&#34;);
+    printf(&#34;----------------------------------\n&#34;);
+    printf(&#34;value at address of m = %d\n&#34;, *p_m);
+    printf(&#34;value at address of fx = %.6f\n&#34;, *p_f);
+    printf(&#34;value at address of cht = %c\n&#34;, *p_c);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Premenné a pointery:<ul>
+<li>m, f, a c sú premenné typu int, float, a char inicializované na zadané hodnoty.</li>
+<li>Pointery p_m, p_f, a p_c uchovávajú adresy týchto premenných.</li>
+</ul>
+</li>
+<li>Použitie operátora &amp;:<ul>
+<li>Operátor &amp; sa používa na získanie adresy premenných.</li>
+</ul>
+</li>
+<li>Použitie operátorov &amp; a *:<ul>
+<li>Kombinácia &amp; a * umožňuje získať hodnotu na adrese priamo cez ukazovateľ.</li>
+</ul>
+</li>
+<li>Použitie pointerových premenných:<ul>
+<li>Použitím samotných pointerov vypisujeme adresy premenných.</li>
+</ul>
+</li>
+<li>Použitie pointerových operátorov:<ul>
+<li>Operátor * (dereferencovanie) umožňuje prístup k hodnote na adrese, na ktorú ukazuje pointer.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<p>Pri spustení programu môže byť výstup nasledovný (adresy sa môžu líšiť v závislosti od systému):</p>
+<pre><code language="language-text" class="language-text">m = 300
+fx = 256.450001
+cht = z
+
+Using &amp; operator :
+-----------------------
+address of m = 0x7ffc7d9d314c
+address of fx = 0x7ffc7d9d3150
+address of cht = 0x7ffc7d9d3154
+
+Using &amp; and * operator :
+-----------------------------
+value at address of m = 300
+value at address of fx = 256.450001
+value at address of cht = z
+
+Using only pointer variable :
+----------------------------------
+address of m = 0x7ffc7d9d314c
+address of fx = 0x7ffc7d9d3150
+address of cht = 0x7ffc7d9d3154
+
+Using only pointer operator :
+----------------------------------
+value at address of m = 300
+value at address of fx = 256.450001
+value at address of cht = z
+</code></pre>
 
 
       </google-codelab-step>
@@ -149,6 +377,62 @@ The sum of the numbers is 11.
 <pre><code language="language-text" class="language-text">Function called with pointer &lt;adresa&gt; with value 74 and pointer &lt;adresa&gt; with value -23.
 The sum of the numbers is 51.
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+// Funkcia na spočítanie dvoch čísel pomocou pointerov
+int addNumbers(int *a, int *b) {
+    // Výpis adries a hodnôt argumentov
+    printf(&#34;Function called with pointer %p with value %d and pointer %p with value %d.\n&#34;, a, *a, b, *b);
+
+    // Návrat súčtu hodnôt, na ktoré ukazujú pointery
+    return *a + *b;
+}
+
+int main() {
+    // Premenné na testovanie
+    int num1 = 5, num2 = 6;
+    int num3 = 74, num4 = -23;
+
+    // Prvé volanie funkcie
+    int sum1 = addNumbers(&amp;num1, &amp;num2);
+    printf(&#34;The sum of the numbers is %d.\n\n&#34;, sum1);
+
+    // Druhé volanie funkcie
+    int sum2 = addNumbers(&amp;num3, &amp;num4);
+    printf(&#34;The sum of the numbers is %d.\n&#34;, sum2);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Funkcia addNumbers:<ul>
+<li>Funkcia prijíma dva pointery typu int*.</li>
+<li>Vypisuje adresy a hodnoty, na ktoré ukazujú pointery.</li>
+<li>Vracia súčet hodnôt, na ktoré ukazujú pointery.</li>
+</ul>
+</li>
+<li>Hlavný program:<ul>
+<li>Definované sú premenné num1, num2, num3, a num4.</li>
+<li>Volanie funkcie addNumbers s adresami premenných pomocou operátora &amp;.</li>
+<li>Výstup obsahuje informácie o pointeroch, hodnotách a výslednom súčte.</li>
+</ul>
+</li>
+<li>Dôležité:<ul>
+<li>Operátor &amp; sa používa na získanie adresy premenných.</li>
+<li>Dereferencovanie * vráti hodnotu na adrese, na ktorú ukazuje pointer.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<p>Pri spustení programu bude výstup nasledovný:</p>
+<pre><code language="language-text" class="language-text">Function called with pointer 0x7ffcd3b9b41c with value 5 and pointer 0x7ffcd3b9b418 with value 6.
+The sum of the numbers is 11.
+
+Function called with pointer 0x7ffcd3b9b414 with value 74 and pointer 0x7ffcd3b9b410 with value -23.
+The sum of the numbers is 51.
+</code></pre>
 
 
       </google-codelab-step>
@@ -159,14 +443,55 @@ The sum of the numbers is 51.
 <p><code>&lt;index prvku>. element of the array &lt;adresa poľa> has address &lt;adresa prvku> with value &lt;hodnota prvku></code></p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Pre pole <code>[9,8,5,1,3]</code> program vypíše:</p>
-<pre><code language="language-text" class="language-text">0. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec1 with value 9
-1. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec2 with value 8
-2. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec3 with value 5
-3. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec4 with value 1
-4. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec5 with value 3
+<pre><code language="language-text" class="language-text">0. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec0 with value 9
+1. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec4 with value 8
+2. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeec8 with value 5
+3. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeecc with value 1
+4. element of the array 0x7ffda2eeeec1 has address 0x7ffda2eeeed0 with value 3
 </code></pre>
 <aside class="special"><p> Všimnite si, že adresy elementov poľa ídu v sekvencií za sebou a adresa 0. elementu je taktiež adresa poľa.</p>
 </aside>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    // Definícia a inicializácia poľa
+    int array[5] = {10, 20, 30, 40, 50};
+
+    // Prechádzanie poľa a výpis požadovaných informácií
+    for (int i = 0; i &lt; 5; i++) {
+        printf(&#34;%d. element of the array %p has address %p with value %d\n&#34;, i, array, &amp;array[i], array[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Definícia a inicializácia poľa:<ul>
+<li>Pole array je staticky definované s veľkosťou 5 a inicializované hodnotami {10, 20, 30, 40, 50}.</li>
+</ul>
+</li>
+<li>Iterácia cez pole:<ul>
+<li>for cyklus prechádza všetky indexy poľa od 0 po 4.</li>
+</ul>
+</li>
+<li>Výpis informácií:<ul>
+<li>Pre každý prvok poľa sa vypíše: <ul>
+<li>Index prvku (i).</li>
+<li>Adresa samotného poľa (array).</li>
+<li>Adresa konkrétneho prvku (&amp;array[i]).</li>
+<li>Hodnota prvku (array[i]).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Formátovanie:<ul>
+<li>%d sa používa na hodnoty typu int.</li>
+<li>%p na výpis adries. Adresy sa pretypujú na (void *) pre kompatibilitu so štandardom %p.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -182,6 +507,56 @@ The sum of the numbers is 51.
 <li>pre vstupný reťacez &#34;Cvicenie7&#34; funkcia vráti 9</li>
 <li>pre vstupný reťacez &#34;&#34; funkcia vráti 0</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+// Funkcia na výpočet dĺžky reťazca
+int stringLength(char *str) {
+    int length = 0;
+
+    // Inkrementácia pointeru, kým nedosiahne nulový znak &#39;\0&#39;
+    while (*str != &#39;\0&#39;) {
+        length++;
+        str++; // Posun pointera na ďalší znak
+    }
+
+    return length;
+}
+
+int main() {
+    // Testovacie reťazce
+    char str1[] = &#34;Milan&#34;;
+    char str2[] = &#34;Cvicenie7&#34;;
+    char str3[] = &#34;&#34;;
+
+    // Výstupy funkcie pre rôzne vstupy
+    printf(&#34;The length of the string \&#34;%s\&#34; is %d\n&#34;, str1, stringLength(str1));
+    printf(&#34;The length of the string \&#34;%s\&#34; is %d\n&#34;, str2, stringLength(str2));
+    printf(&#34;The length of the string \&#34;%s\&#34; is %d\n&#34;, str3, stringLength(str3));
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Funkcia stringLength:<ul>
+<li>Prijíma jeden argument typu char*, ktorý ukazuje na reťazec znakov.</li>
+<li>Používa while cyklus na iteráciu cez znaky reťazca.</li>
+<li>Pointer str sa posúva na ďalšiu pozíciu pomocou str++, kým nedosiahne koncový nulový znak ‘\0&#39;.</li>
+<li>Premenná length sa inkrementuje pri každom kroku, čím uchováva počet znakov v reťazci.</li>
+</ul>
+</li>
+<li>Hlavný program:<ul>
+<li>Testuje funkciu s rôznymi vstupnými reťazcami vrátane prázdneho reťazca.</li>
+<li>Výsledky funkcie sa vypisujú na štandardný výstup.</li>
+</ul>
+</li>
+<li>Obmedzenia:<ul>
+<li>Funkcia nevyžaduje žiadne externé knižnice okrem &lt;stdio.h&gt;.</li>
+<li>Reťazec musí byť ukončený nulovým znakom ‘\0&#39; (čo je štandard pre reťazce v C).</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -195,6 +570,50 @@ The sum of the numbers is 51.
 5
 8
 9
+</code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    // Definícia statického poľa
+    int array[] = {10, 20, 30, 40, 50}; // Ľubovoľné hodnoty
+    int size = sizeof(array) / sizeof(array[0]); // Počet prvkov v poli
+
+    // Výpis prvkov poľa odzadu
+    printf(&#34;Array elements in reverse order:\n&#34;);
+    for (int i = size - 1; i &gt;= 0; i--) {
+        printf(&#34;%d\n&#34;, array[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Definícia poľa:<ul>
+<li>Pole array[] je inicializované s ľubovoľnými hodnotami, napr. {10, 20, 30, 40, 50}.</li>
+</ul>
+</li>
+<li>Výpočet veľkosti poľa:<ul>
+<li>sizeof(array) vráti celkovú veľkosť poľa v bajtoch.</li>
+<li>sizeof(array[0]) vráti veľkosť jedného prvku poľa.</li>
+<li>size sa vypočíta ako počet prvkov v poli: sizeof(array) / sizeof(array[0]).</li>
+</ul>
+</li>
+<li>Iterácia cez pole odzadu:<ul>
+<li>Cyklus for iteruje od posledného indexu (size - 1) po prvý index (0).</li>
+<li>Prvky sa vypisujú pomocou printf na samostatné riadky.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<p>Pri inicializácii poľa int array[] = {10, 20, 30, 40, 50}; bude výstup nasledovný:</p>
+<pre><code language="language-text" class="language-text">Array elements in reverse order:
+50
+40
+30
+20
+10
 </code></pre>
 
 
@@ -210,6 +629,63 @@ The sum of the numbers is 51.
 </code></pre>
 <h2 is-upgraded>Pomôcka</h2>
 <p>Skúste najprv prísť na implementáciu bez tejto pomoci. Ak by ste sa však nevedeli pohnúť <a href="https://www.w3resource.com/w3r_images/c-pointer-exercise-14-image.png" target="_blank">obrázok na tomto odkaze opisuje algoritmus zoradenia</a>.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    // Definícia a inicializácia statického poľa
+    int array[] = {34, 7, 23, 32, 5, 62};
+    int size = sizeof(array) / sizeof(array[0]); // Veľkosť poľa
+
+    // Bubble sort na zoradenie poľa
+    for (int i = 0; i &lt; size - 1; i++) {
+        for (int j = 0; j &lt; size - i - 1; j++) {
+            if (array[j] &gt; array[j + 1]) {
+                // Výmenná operácia
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+
+    // Výpis zoradeného poľa
+    printf(&#34;Sorted array: &#34;);
+    for (int i = 0; i &lt; size; i++) {
+        printf(&#34;%d &#34;, array[i]);
+    }
+    printf(&#34;\n&#34;);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Definícia poľa:<ul>
+<li>Pole array[] je inicializované s ľubovoľnými hodnotami, napr. {34, 7, 23, 32, 5, 62}.</li>
+</ul>
+</li>
+<li>Výpočet veľkosti poľa:<ul>
+<li>sizeof(array) určuje veľkosť poľa v bajtoch.</li>
+<li>sizeof(array[0]) určuje veľkosť jedného prvku poľa.</li>
+<li>Veľkosť poľa je teda size = sizeof(array) / sizeof(array[0]).</li>
+</ul>
+</li>
+<li>Bubble sort algoritmus:<ul>
+<li>Dvojitý cyklus iteruje cez pole.</li>
+<li>Ak je aktuálny prvok väčší ako nasledujúci, hodnoty sa vymenia.</li>
+<li>Tento proces sa opakuje, až kým pole nie je zoradené.</li>
+</ul>
+</li>
+<li>Výpis poľa:<ul>
+<li>Po zoradení sa prvky poľa vypisujú v jednom riadku oddelené medzerami.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<p>Pri inicializácii poľa int array[] = {34, 7, 23, 32, 5, 62}; bude výstup:</p>
+<pre><code language="language-text" class="language-text">Sorted array: 5 7 23 32 34 62
+</code></pre>
 
 
       </google-codelab-step>
