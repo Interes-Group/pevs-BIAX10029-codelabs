@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "",
+  "updated": "2024-12-08T18:55:33+01:00",
+  "id": "cvicenie-11",
+  "duration": 0,
+  "title": "Cvičenie 11 - C++ Triedy",
+  "authors": "Milan Mladoniczky",
+  "summary": "Cvičenie 11 C++ Triedy",
+  "source": "cvicenie-11.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "cvicenie"
+  ],
+  "tags": [
+    "beginner"
+  ],
+  "feedback": "https://github.com/interes-group/pevs-BIAX10029-codelabs/issues",
+  "url": "cvicenie-11"
+}

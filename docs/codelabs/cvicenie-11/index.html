@@ -1,0 +1,194 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Cvičenie 11 - C&#43;&#43; Triedy</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="cvicenie-11"
+                  title="Cvičenie 11 - C&#43;&#43; Triedy"
+                  environment="web"
+                  feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
+
+      <google-codelab-step label="Úvod" duration="0">
+        <p>Náplňou týchto úloh je ozrejmiť si prácu s C++ jazykom a objektovo-orientovaným prístupom k implementácii programov pomocou tried.</p>
+<h2 is-upgraded>Obsah</h2>
+<ul>
+<li>definícia triedy v c++</li>
+<li>dedenie</li>
+<li>polymorfizmus</li>
+</ul>
+<aside class="warning"><p> Ak používate ako vývojové prostredie lokálny a editor a následnú kompiláciu cez terminál. Použite príkaz:</p>
+<pre><code language="language-shell" class="language-shell">g++ -o program -Wall -Wextra main.cpp
+</code></pre>
+</aside>
+<p>Pre vypracovanie týchto úloh úplne postačuje použitie online kompilátora jazyku C++. Napríklad stránku <a href="https://onecompiler.com/cpp" target="_blank">OneCompiler for C</a> Avšak odporúčam použiť C++ IDE ako napríklad Clion alebo Visual Studio.</p>
+<p>Riešenia na jednotlivé úlohy budú uverejnené neskôr.</p>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 11.1" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C++ pre správu študentov. Program definuje triedu <code>Student</code>, ktorá má reprezentovať študenta na škole. Trieda má obsahovať atribúty (členov):</p>
+<ul>
+<li>Meno (<em>string</em>)</li>
+<li>Id (<em>int</em>)</li>
+<li>Počet získaných bodov (<em>float</em>)</li>
+</ul>
+<p>Trieda študenta by mala obsahovať metódy:</p>
+<ul>
+<li>Konštruktor s inicializáciou atribútov</li>
+<li>Metódu na nastavenie a získanie bodov</li>
+<li>Metódu <code>isPassing</code>, ktorá vráti true ak študent má viac ako 50 bodov.</li>
+<li>Metódu výpisu informácii o študentovi</li>
+</ul>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Program môže obsahovať nasledovnú logiku:</p>
+<ul>
+<li>Vytvorenie študenta: <code>Student("Alice", 101, 40.5)</code></li>
+<li>Nastavenie bodov na <em>55.0</em></li>
+<li>Vypísanie študenta: <code>Meno: Alice, ID: 101, Body: 55.0, Status: Passing</code></li>
+</ul>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 11.2" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C++, ktorý definuje triedu <code>Product</code>, ktorá bude reprezentovať produkt v obchode s nasledujúcimi atribútmi:</p>
+<ul>
+<li>Názov produktu (<em>string</em>)</li>
+<li>Cena (<em>float</em>)</li>
+<li>Počet kusov na sklade (<em>int</em>)</li>
+</ul>
+<p>Trieda by mala obsahovať metódy:</p>
+<ul>
+<li>Konštruktor na inicializáciu produktu.</li>
+<li>Metódu <code>sell</code>, ktorá zníži počet kusov na sklade, ak je dostatok tovaru (inak vypíše chybovú správu).</li>
+<li>Metódu <code>restock</code>, ktorá zvýši počet kusov na sklade.</li>
+<li>Metódu na výpis detailov o produkte.</li>
+</ul>
+<p>V rámci programu vytvorte pole produktov, následne sa nejaké kusy produktov predajú a zobrazí sa stav skladu.</p>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Programm môže obsahovať nasledovnú logiku:</p>
+<ul>
+<li>Vytvorí produkt: <code>Product("Laptop", 1200.0, 10)</code></li>
+<li>Vytvorí produkt: <code>Product("Stolička", 50.50, 11)</code></li>
+<li>Predá 3 kusy laptopov</li>
+<li>Vypíše stav skladu</li>
+<li>Doplní 5 kusov tovaru</li>
+<li>Vypíše stav skladu</li>
+</ul>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="⛓️‍💥 Úloha 11.3" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C++, ktorý implementuje obojstranne zreťazený zoznam pomocou tried. Každý prvok zoznamu (trieda <code>ListItem</code>) by mal obsahovať celé kladné číslo, pointer na ďalší prvok a pointer na predchádzajúci. Program umožní používateľovi cez štandardný vstup zadať číslo prvku zoznamu. Po zadaní vstupu je nový prvok pridaný na koniec zoznamu a následne vypíše celý aktuálny zoznam a znova ponúkne používateľovi zadať ďalší prvok. Program končí ak používateľ na vstupe zadá hodnotu -1.</p>
+<aside class="warning"><p> Nezabudnite uvoľniť pamäť alokovanú pre jednotlivé prvky zoznamu na konci programu!</p>
+</aside>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Priebeh programu môže vyzerať nasledovne:</p>
+<pre><code language="language-text" class="language-text">---
+Zadajte hodnotu prvku: 1
+Aktuálny zoznam: 1
+---
+Zadajte hodnotu prvku: 85
+Aktuálny zoznam: 1, 85
+---
+Zadajte hodnotu prvku: 423
+Aktuálny zoznam: 1, 85, 423
+---
+Zadajte hodnotu prvku: -1
+</code></pre>
+
+
+      </google-codelab-step>
+
+      <google-codelab-step label="Úloha 11.4" duration="0">
+        <p>Napíšte program, zdrojový kód, v jazyku C++, ktorý modeluje hierarchiu zamestnancov vo firme pomocou dedičnosti tried. Program bude obsahovať tieto triedy:</p>
+<p>Základná trieda: <code>Employee</code></p>
+<p><strong>Atribúty</strong>:</p>
+<ul>
+<li>Meno zamestnanca (<em>string</em>)</li>
+<li>ID zamestnanca (<em>int</em>)</li>
+</ul>
+<p><strong>Metódy</strong>:</p>
+<ul>
+<li>Konštruktor na inicializáciu mena a ID.</li>
+<li>Virtuálna metóda <code>calculateSalary()</code>, ktorá vráti základný plat (napr. 1000 EUR).</li>
+<li>Metóda na výpis informácií o zamestnancovi.</li>
+</ul>
+<p>Odvodená trieda: <code>Manager</code></p>
+<p>Dedí z triedy <strong>Employee</strong>. <strong>Atribúty</strong>:</p>
+<ul>
+<li>Bonus (<em>float</em>)</li>
+</ul>
+<p><strong>Metódy</strong>:</p>
+<ul>
+<li>Preťaženie metódy <code>calculateSalary()</code>, ktorá vráti základný plat plus bonus.</li>
+<li>Metóda na nastavenie bonusu.</li>
+</ul>
+<p>Odvodená trieda: <code>Intern</code></p>
+<p>Dedí z triedy <strong>Employee</strong>. <strong>Atribúty</strong>:</p>
+<ul>
+<li>Počet hodín praxe (<em>int</em>)</li>
+<li>Sadzba za hodinu (<em>float</em>)</li>
+</ul>
+<p><strong>Metódy</strong>:</p>
+<ul>
+<li>Preťaženie metódy <code>calculateSalary()</code>, ktorá vypočíta plat ako počet hodín * sadzba za hodinu.</li>
+</ul>
+<p>V rámci programu:</p>
+<ul>
+<li>Definujte všetky tri triedy a ich príslušné atribúty a metódy.</li>
+<li>Programe vytvorte pole zamestnancov, ktoré bude obsahovať objekty typu <em>Employee</em>, <em>Manager</em>, a <em>Intern</em>.</li>
+<li>Pre každý objekt zavolajte metódu <code>calculateSalary()</code> a vypíšte informácie o zamestnancovi vrátane vypočítaného platu.</li>
+<li>Využite princíp dedičnosti a polymorfizmus (virtuálne metódy). Použite dynamickú alokáciu objektov v poli zamestnancov. Dodržujte dobré princípy objektovo-orientovaného návrhu (napr. zapúzdrenie).</li>
+</ul>
+<h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
+<p>Program môže obsahovať nasledovné objekty:</p>
+<ul>
+<li>Zamestnanec: Employee(&#34;Alice&#34;, 1)</li>
+<li>Manažér: Manager(&#34;Bob&#34;, 2, bonus = 500.0)</li>
+<li>Intern: Intern(&#34;Charlie&#34;, 3, hodiny = 20, sadzba = 10.0)</li>
+</ul>
+<pre><code language="language-text" class="language-text">Zamestnanec:
+Meno: Alice, ID: 1, Plat: 1000.0
+
+Manažér:
+Meno: Bob, ID: 2, Plat: 1500.0
+
+Stážista:
+Meno: Charlie, ID: 3, Plat: 200.0
+</code></pre>
+
+
+      </google-codelab-step>
+
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
