@@ -20,14 +20,13 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
                   codelab-ga4id=""
                   id="cvicenie-9"
                   title="Cvičenie 9 - Štruktúry"
                   environment="web"
                   feedback-link="https://github.com/interes-group/pevs-BIAX10029-codelabs/issues">
-    
+
       <google-codelab-step label="Úvod" duration="0">
         <p>Náplňou týchto úloh je precvičiť si prácu so štruktúrami v jazyku C. Úlohy sú definované pre vyskúšanie si štruktúr v rôznych prípadoch použitia a práce s nimi.</p>
 <p>Pri vypracovaní úloh použite všetky doterajšie znalosti, hlavne z tématiky polí a alokovania pamäte.</p>
@@ -48,25 +47,25 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 9.1" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vytvorí štruktúru na reprezentáciu študenta. Táto štruktúra by mala obsahovať nasledujúce položky: <em>meno</em> (pole znakov), <em>vek</em> (celé číslo), <em>priemerný prospech</em> (desatinné číslo). Program by mal načítať údaje študentov, vypočítať priemerný vek a priemerný prospech všetkých študentov a tieto hodnoty vypísať.</p>
 <p>Vstupy programu môžu byť zadané zo štandardného vstupu alebo načítané zo súboru.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Pre nasledujúce vstupy programu:</p>
 <pre><code language="language-text" class="language-text">1. Študent
-Meno: Ján 
-Vek: 20 
+Meno: Ján
+Vek: 20
 Priemerný prospech: 1.5
 ---
 2. Študent
-Meno: Petra 
-Vek: 22 
+Meno: Petra
+Vek: 22
 Priemerný prospech: 1.8
 ---
 3. Študent
-Meno: Milan 
-Vek: 19 
+Meno: Milan
+Vek: 19
 Priemerný prospech: 2.0
 ---
 </code></pre>
@@ -74,10 +73,98 @@ Priemerný prospech: 2.0
 <pre><code language="language-text" class="language-text">Sumár študentov:
 Priemerný vek: 20.33 Priemerný prospech: 1.77
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_NAME_LENGTH 50
+
+// Definícia štruktúry pre reprezentáciu študenta
+typedef struct {
+    char name[MAX_NAME_LENGTH];
+    int age;
+    float averageGrade;
+} Student;
+
+int main() {
+    int numStudents;
+    printf(&#34;Zadajte počet študentov: &#34;);
+    scanf(&#34;%d&#34;, &amp;numStudents);
+
+    if (numStudents &lt;= 0) {
+        printf(&#34;Počet študentov musí byť kladné číslo.\n&#34;);
+        return 1;
+    }
+
+    // Dynamická alokácia poľa študentov
+    Student *students = (Student *)malloc(numStudents * sizeof(Student));
+    if (students == NULL) {
+        printf(&#34;Nepodarilo sa alokovať pamäť.\n&#34;);
+        return 1;
+    }
+
+    // Načítanie údajov študentov
+    for (int i = 0; i &lt; numStudents; i++) {
+        printf(&#34;\n%d. Študent\n&#34;, i + 1);
+        printf(&#34;Meno: &#34;);
+        scanf(&#34; %49s&#34;, students[i].name); // Obmedzenie na MAX_NAME_LENGTH - 1 znakov
+        printf(&#34;Vek: &#34;);
+        scanf(&#34;%d&#34;, &amp;students[i].age);
+        printf(&#34;Priemerný prospech: &#34;);
+        scanf(&#34;%f&#34;, &amp;students[i].averageGrade);
+    }
+
+    // Výpočet priemerného veku a priemerného prospechu
+    float totalAge = 0, totalGrade = 0;
+    for (int i = 0; i &lt; numStudents; i++) {
+        totalAge += students[i].age;
+        totalGrade += students[i].averageGrade;
+    }
+
+    float averageAge = totalAge / numStudents;
+    float averageGrade = totalGrade / numStudents;
+
+    // Výpis výsledkov
+    printf(&#34;\nSumár študentov:\n&#34;);
+    printf(&#34;Priemerný vek: %.2f\n&#34;, averageAge);
+    printf(&#34;Priemerný prospech: %.2f\n&#34;, averageGrade);
+
+    // Uvoľnenie pamäte
+    free(students);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Definícia štruktúry:<ul>
+<li>Štruktúra Student obsahuje položky name (pole znakov), age (vek), a averageGrade (priemerný prospech).</li>
+</ul>
+</li>
+<li>Načítanie počtu študentov:<ul>
+<li>Používateľ zadáva počet študentov.</li>
+<li>Pamäť pre pole študentov je dynamicky alokovaná pomocou malloc.</li>
+</ul>
+</li>
+<li>Načítanie údajov:<ul>
+<li>V cykle sa načítavajú údaje pre každého študenta.</li>
+<li>Funkcia scanf obmedzuje dĺžku vstupu pre meno na maximálne 49 znakov (jeden znak je rezervovaný pre \0).</li>
+</ul>
+</li>
+<li>Výpočty:<ul>
+<li>Po načítaní údajov sa vypočíta priemerný vek a priemerný prospech pomocou súčtov všetkých hodnôt.</li>
+</ul>
+</li>
+<li>Výpis a uvoľnenie pamäte:<ul>
+<li>Priemerné hodnoty sú vypísané s presnosťou na dve desatinné miesta.</li>
+<li>Dynamicky alokovaná pamäť sa uvoľní pomocou free.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Úloha 9.2" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vytvorí štruktúru na reprezentáciu zamestnanca. Štruktúra by mala obsahovať <em>meno</em> (pole znakov), <em>identifikačné číslo</em> (celé číslo) a <em>plat</em> (desatinné číslo). Program by mal načítať údaje pre niekoľko zamestnancov, zoradiť ich podľa platu zostupne a vypísať zoznam zamestnancov spolu s ich platmi. Následne program vypíše priemerný plat zamestnancov.</p>
 <p>Údaje o zamestnancoch načítajte zo súboru, kde na jednom riadku je definovaný jeden zamestnanec a hodnoty na riadku sú oddelené medzerou: <code>ID Meno Plat</code></p>
@@ -105,10 +192,121 @@ Priemerný plat: 2767.08
 ---
 Priemerný plat: 2767.08
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_NAME_LENGTH 50
+#define MAX_EMPLOYEES 100
+
+// Definícia štruktúry na reprezentáciu zamestnanca
+typedef struct {
+    int id;
+    char name[MAX_NAME_LENGTH];
+    float salary;
+} Employee;
+
+// Funkcia na porovnanie zamestnancov podľa platu (pre qsort)
+int compareBySalaryDescending(const void *a, const void *b) {
+    float salaryA = ((Employee *)a)-&gt;salary;
+    float salaryB = ((Employee *)b)-&gt;salary;
+    if (salaryA &lt; salaryB) return 1;
+    if (salaryA &gt; salaryB) return -1;
+    return 0;
+}
+
+int main() {
+    char filePath[100];
+    Employee employees[MAX_EMPLOYEES];
+    int count = 0;
+
+    // Načítanie cesty k súboru
+    printf(&#34;Zadajte cestu k súboru: &#34;);
+    scanf(&#34;%s&#34;, filePath);
+
+    // Otvorenie súboru
+    FILE *file = fopen(filePath, &#34;r&#34;);
+    if (file == NULL) {
+        printf(&#34;Nepodarilo sa otvoriť súbor.\n&#34;);
+        return 1;
+    }
+
+    // Načítanie údajov zo súboru
+    while (fscanf(file, &#34;%d %49s %f&#34;, &amp;employees[count].id, employees[count].name, &amp;employees[count].salary) == 3) {
+        count++;
+        if (count &gt;= MAX_EMPLOYEES) {
+            printf(&#34;Dosiahnutý maximálny počet zamestnancov (%d).\n&#34;, MAX_EMPLOYEES);
+            break;
+        }
+    }
+    fclose(file);
+
+    if (count == 0) {
+        printf(&#34;Súbor neobsahuje žiadne údaje o zamestnancoch.\n&#34;);
+        return 1;
+    }
+
+    // Zoradenie zamestnancov podľa platu zostupne
+    qsort(employees, count, sizeof(Employee), compareBySalaryDescending);
+
+    // Výpočet priemerného platu
+    float totalSalary = 0;
+    for (int i = 0; i &lt; count; i++) {
+        totalSalary += employees[i].salary;
+    }
+    float averageSalary = totalSalary / count;
+
+    // Výpis zamestnancov
+    printf(&#34;\n&#34;);
+    for (int i = 0; i &lt; count; i++) {
+        printf(&#34;%d %s %.2f\n&#34;, employees[i].id, employees[i].name, employees[i].salary);
+    }
+
+    // Výpis priemerného platu
+    printf(&#34;---\n&#34;);
+    printf(&#34;Priemerný plat: %.2f\n&#34;, averageSalary);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Definícia štruktúry:<ul>
+<li>Štruktúra Employee obsahuje ID, meno a plat zamestnanca.</li>
+</ul>
+</li>
+<li>Načítanie údajov zo súboru:<ul>
+<li>Súbor je otvorený v režime čítania pomocou fopen.</li>
+<li>Hodnoty sú načítané pomocou fscanf, kde sa očakáva formát ID Meno Plat.</li>
+</ul>
+</li>
+<li>Kontrola limitov:<ul>
+<li>Ak súbor neobsahuje údaje alebo je dosiahnutý maximálny počet zamestnancov (MAX_EMPLOYEES), program končí s príslušnou správou.</li>
+</ul>
+</li>
+<li>Zoradenie:<ul>
+<li>qsort zoradí zamestnancov podľa platu v zostupnom poradí pomocou funkcie compareBySalaryDescending.</li>
+</ul>
+</li>
+<li>Výpočet priemerného platu:<ul>
+<li>Priemerný plat sa vypočíta ako súčet platov všetkých zamestnancov delený ich počtom.</li>
+</ul>
+</li>
+<li>Výpis výsledkov:<ul>
+<li>Zoradení zamestnanci sú vypísaní spolu s ich ID, menom a platom.</li>
+<li>Priemerný plat je vypísaný s presnosťou na dve desatinné miesta.</li>
+</ul>
+</li>
+<li>Uvoľnenie zdrojov:<ul>
+<li>Súbor je zavretý po načítaní údajov.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="🗓️ Úloha 9.3" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý definuje štruktúru na reprezentáciu dátumu s položkami <em>deň</em>, <em>mesiac</em> a <em>rok</em> (celé čísla). Program by mal umožniť používateľovi zadať dva dátumy kde jednotlivé hodnoty dátumov sú definované v jednom riadku oddelené medzerou a vypočítať rozdiel medzi nimi. Rozdieľ je vypísaný ako počet dní medzi dátumami.</p>
 <p>V programe ošetrite vstup od používateľa aby bolo možné zadať iba správny dátum (napríklad nie je možné zadať 31.2.) a zohľadňuje priestupné roky.</p>
@@ -130,24 +328,141 @@ Rozdiel dátumov: 2 dni
 <li>vstup: 1.1.2023 a 15.1.2024 -&gt; 1 rok a 15 dní</li>
 <li>vstup: 1.1.2022 a 5.3.2022 -&gt; 2 mesiace a 5 dní</li>
 </ul>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// Štruktúra na reprezentáciu dátumu
+typedef struct {
+    int day;
+    int month;
+    int year;
+} Date;
+
+// Počet dní v mesiacoch (pre bežné a priestupné roky)
+const int daysInMonth[2][12] = {
+    {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, // Bežný rok
+    {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}  // Priestupný rok
+};
+
+// Funkcia na kontrolu, či je rok priestupný
+int isLeapYear(int year) {
+    return (year % 4 == 0 &amp;&amp; year % 100 != 0) || (year % 400 == 0);
+}
+
+// Funkcia na validáciu dátumu
+int isValidDate(Date date) {
+    if (date.year &lt; 1 || date.month &lt; 1 || date.month &gt; 12 || date.day &lt; 1) {
+        return 0;
+    }
+    int leap = isLeapYear(date.year);
+    if (date.day &gt; daysInMonth[leap][date.month - 1]) {
+        return 0;
+    }
+    return 1;
+}
+
+// Funkcia na prepočet dátumu na počet dní od začiatku referenčného bodu (napr. 1.1.0001)
+int dateToDays(Date date) {
+    int totalDays = 0;
+
+    // Pridanie dní za celé roky
+    for (int i = 1; i &lt; date.year; i++) {
+        totalDays += isLeapYear(i) ? 366 : 365;
+    }
+
+    // Pridanie dní za celé mesiace v aktuálnom roku
+    int leap = isLeapYear(date.year);
+    for (int i = 0; i &lt; date.month - 1; i++) {
+        totalDays += daysInMonth[leap][i];
+    }
+
+    // Pridanie dní v aktuálnom mesiaci
+    totalDays += date.day;
+
+    return totalDays;
+}
+
+// Funkcia na výpočet rozdielu medzi dvoma dátumami
+int calculateDateDifference(Date date1, Date date2) {
+    int days1 = dateToDays(date1);
+    int days2 = dateToDays(date2);
+    return abs(days1 - days2);
+}
+
+int main() {
+    Date date1, date2;
+
+    // Načítanie prvého dátumu
+    printf(&#34;Prvý dátum (deň mesiac rok): &#34;);
+    scanf(&#34;%d %d %d&#34;, &amp;date1.day, &amp;date1.month, &amp;date1.year);
+    if (!isValidDate(date1)) {
+        printf(&#34;Neplatný dátum! Zadajte správny dátum.\n&#34;);
+        return 1;
+    }
+
+    // Načítanie druhého dátumu
+    printf(&#34;Druhý dátum (deň mesiac rok): &#34;);
+    scanf(&#34;%d %d %d&#34;, &amp;date2.day, &amp;date2.month, &amp;date2.year);
+    if (!isValidDate(date2)) {
+        printf(&#34;Neplatný dátum! Zadajte správny dátum.\n&#34;);
+        return 1;
+    }
+
+    // Výpočet a výpis rozdielu
+    int difference = calculateDateDifference(date1, date2);
+    printf(&#34;---\nRozdiel dátumov: %d dní\n&#34;, difference);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Štruktúra Date:<ul>
+<li>Reprezentuje dátum s položkami day, month a year.</li>
+</ul>
+</li>
+<li>Priestupný rok:<ul>
+<li>Funkcia isLeapYear kontroluje, či je rok priestupný, na základe pravidiel pre gregoriánsky kalendár.</li>
+</ul>
+</li>
+<li>Validácia dátumu:<ul>
+<li>Funkcia isValidDate overuje, či zadaný dátum je platný (správny rozsah dní, mesiacov a rokov).</li>
+</ul>
+</li>
+<li>Prepočet dátumu na počet dní:<ul>
+<li>Funkcia dateToDays konvertuje dátum na celkový počet dní od referenčného bodu (1.1.0001).</li>
+<li>Zahŕňa dni za celé roky, mesiace a aktuálny deň.</li>
+</ul>
+</li>
+<li>Rozdiel medzi dátumami:<ul>
+<li>Funkcia calculateDateDifference vypočíta rozdiel v počte dní medzi dvoma dátumami.</li>
+</ul>
+</li>
+<li>Hlavný program:<ul>
+<li>Používateľ zadá dva dátumy, ktoré sa validujú.</li>
+<li>Po výpočte rozdielu v dňoch je výsledok vypísaný.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="📚 Úloha 9.4" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vytvorí štruktúru na reprezentáciu knihy v knižnici. Štruktúra by mala obsahovať <em>názov</em> (pole znakov), <em>autora</em> (pole znakov) a <em>rok vydania</em> (celé číslo). Program by mal načítať údaje zo súboru kde je definovaná kniha na jednom riadku a hodnoty štruktúry sú oddelené bodkočiarkou. Vstupný súbor môže byť v rovnakom priečinku ako program a môže mať napevno definovaný názov v zdrojovom kóde. Program po úspešnom spracovaní súboru vypíše počet načítaných kníh. Program následne umožní zadať používateľovi rok a vypíše knihy, ktoré boli vydané v zadanom roku.</p>
 <h2 is-upgraded>Príklady vstupov / výstupov programu</h2>
 <p>Vstupný súbor s knihami</p>
-<pre><code language="language-text" class="language-text">Programovanie v C;Kernighan &amp; Ritchie;1988  
-Moderné algoritmy;Jon Bentley;1990  
-Umenie programovania;Donald Knuth;1968  
-Štruktúra a interpretácia počítačových programov;Harold Abelson &amp; Gerald Jay Sussman;1985  
-Cvičenia z programovania;Brian Kernighan;1988  
-Algoritmy v C++;Robert Sedgewick;1990  
-Čistý kód;Robert C. Martin;2008  
-Pragmatický programátor;Andrew Hunt &amp; David Thomas;1999  
-Python pre začiatočníkov;Guido van Rossum;2000  
-Počítačová grafika;John F. Hughes &amp; James D. Foley;1995  
+<pre><code language="language-text" class="language-text">Programovanie v C;Kernighan &amp; Ritchie;1988
+Moderné algoritmy;Jon Bentley;1990
+Umenie programovania;Donald Knuth;1968
+Štruktúra a interpretácia počítačových programov;Harold Abelson &amp; Gerald Jay Sussman;1985
+Cvičenia z programovania;Brian Kernighan;1988
+Algoritmy v C++;Robert Sedgewick;1990
+Čistý kód;Robert C. Martin;2008
+Pragmatický programátor;Andrew Hunt &amp; David Thomas;1999
+Python pre začiatočníkov;Guido van Rossum;2000
+Počítačová grafika;John F. Hughes &amp; James D. Foley;1995
 </code></pre>
 <p>Priebeh programu môže byť nasledovný:</p>
 <pre><code language="language-text" class="language-text">Počet kníh v databáze: 10
@@ -161,10 +476,134 @@ Názov: Algoritmy v C++
 Autor: Robert Sedgewick
 Rok vydania: 1990
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_TITLE_LENGTH 100
+#define MAX_AUTHOR_LENGTH 100
+#define MAX_BOOKS 100
+
+// Štruktúra na reprezentáciu knihy
+typedef struct {
+    char title[MAX_TITLE_LENGTH];
+    char author[MAX_AUTHOR_LENGTH];
+    int year;
+} Book;
+
+// Funkcia na načítanie údajov zo súboru
+int loadBooks(const char *filename, Book books[]) {
+    FILE *file = fopen(filename, &#34;r&#34;);
+    if (file == NULL) {
+        printf(&#34;Nepodarilo sa otvoriť súbor %s.\n&#34;, filename);
+        return -1;
+    }
+
+    int count = 0;
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        if (count &gt;= MAX_BOOKS) {
+            printf(&#34;Dosiahnutý maximálny počet kníh (%d).\n&#34;, MAX_BOOKS);
+            break;
+        }
+
+        // Odstránenie nového riadku na konci
+        line[strcspn(line, &#34;\n&#34;)] = &#39;\0&#39;;
+
+        // Rozdelenie riadku podľa bodkočiarky
+        char *token = strtok(line, &#34;;&#34;);
+        if (token != NULL) {
+            strncpy(books[count].title, token, MAX_TITLE_LENGTH - 1);
+            books[count].title[MAX_TITLE_LENGTH - 1] = &#39;\0&#39;;
+        }
+
+        token = strtok(NULL, &#34;;&#34;);
+        if (token != NULL) {
+            strncpy(books[count].author, token, MAX_AUTHOR_LENGTH - 1);
+            books[count].author[MAX_AUTHOR_LENGTH - 1] = &#39;\0&#39;;
+        }
+
+        token = strtok(NULL, &#34;;&#34;);
+        if (token != NULL) {
+            books[count].year = atoi(token);
+        }
+
+        count++;
+    }
+
+    fclose(file);
+    return count;
+}
+
+// Funkcia na vyhľadanie a výpis kníh podľa roku
+void printBooksByYear(Book books[], int count, int year) {
+    int found = 0;
+    for (int i = 0; i &lt; count; i++) {
+        if (books[i].year == year) {
+            printf(&#34;Názov: %s\n&#34;, books[i].title);
+            printf(&#34;Autor: %s\n&#34;, books[i].author);
+            printf(&#34;Rok vydania: %d\n&#34;, books[i].year);
+            printf(&#34;---\n&#34;);
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf(&#34;Žiadne knihy z roku %d.\n&#34;, year);
+    }
+}
+
+int main() {
+    Book books[MAX_BOOKS];
+    const char *filename = &#34;books.txt&#34;;
+
+    // Načítanie kníh zo súboru
+    int bookCount = loadBooks(filename, books);
+    if (bookCount &lt; 0) {
+        return 1; // Chyba pri načítaní
+    }
+
+    printf(&#34;Počet kníh v databáze: %d\n&#34;, bookCount);
+
+    // Zadanie roku od používateľa
+    int year;
+    printf(&#34;Zadajte rok vydania kníh: &#34;);
+    scanf(&#34;%d&#34;, &amp;year);
+
+    // Výpis kníh podľa roku
+    printBooksByYear(books, bookCount, year);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Štruktúra Book:<ul>
+<li>Obsahuje názov knihy, autora a rok vydania.</li>
+</ul>
+</li>
+<li>Načítanie zo súboru:<ul>
+<li>Funkcia loadBooks otvára súbor books.txt a načítava knihy po riadkoch.</li>
+<li>Každý riadok je rozdelený na časti (title, author, year) pomocou strtok.</li>
+<li>Maximálny počet kníh je obmedzený na MAX_BOOKS.</li>
+</ul>
+</li>
+<li>Vyhľadanie podľa roku:<ul>
+<li>Funkcia printBooksByYear prechádza zoznam kníh a vypisuje knihy, ktoré zodpovedajú zadanému roku.</li>
+</ul>
+</li>
+<li>Hlavný program:<ul>
+<li>Načítava knihy zo súboru.</li>
+<li>Vypisuje počet kníh v databáze.</li>
+<li>Umožňuje používateľovi zadať rok a zobrazí zodpovedajúce knihy.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="⛓️‍💥 Úloha 9.5" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý implementuje jednoduchý zreťazený zoznam pomocou štruktúr. Každý prvok zoznamu by mal obsahovať celé kladné číslo a pointer na ďalší prvok. Program umožní používateľovi cez štandardný vstup zadať číslo prvku zoznamu. Po zadaní vstupu je nový prvok pridaný na koniec zoznamu a následne vypíše celý aktuálny zoznam a znova ponúkne používateľovi zadať ďalší prvok. Program končí ak používateľ na vstupe zadá hodnotu -1.</p>
 <aside class="warning"><p> Nezabudnite uvoľniť pamäť alokovanú pre jednotlivé prvky zoznamu na konci programu!</p>
@@ -183,10 +622,138 @@ Aktuálny zoznam: 1, 85, 423
 ---
 Zadajte hodnotu prvku: -1
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// Štruktúra pre uzol zreťazeného zoznamu
+typedef struct Node {
+    int value;
+    struct Node *next;
+} Node;
+
+// Funkcia na vytvorenie nového uzla
+Node* createNode(int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf(&#34;Nepodarilo sa alokovať pamäť pre nový uzol.\n&#34;);
+        exit(1);
+    }
+    newNode-&gt;value = value;
+    newNode-&gt;next = NULL;
+    return newNode;
+}
+
+// Funkcia na pripojenie uzla na koniec zoznamu
+void appendNode(Node** head, int value) {
+    Node* newNode = createNode(value);
+
+    if (*head == NULL) {
+        // Ak je zoznam prázdny, nový uzol sa stane hlavou
+        *head = newNode;
+    } else {
+        // Inak nájdeme posledný uzol a pripojíme nový uzol
+        Node* current = *head;
+        while (current-&gt;next != NULL) {
+            current = current-&gt;next;
+        }
+        current-&gt;next = newNode;
+    }
+}
+
+// Funkcia na výpis zoznamu
+void printList(Node* head) {
+    Node* current = head;
+    if (current == NULL) {
+        printf(&#34;Zoznam je prázdny.\n&#34;);
+        return;
+    }
+    while (current != NULL) {
+        printf(&#34;%d&#34;, current-&gt;value);
+        if (current-&gt;next != NULL) {
+            printf(&#34;, &#34;);
+        }
+        current = current-&gt;next;
+    }
+    printf(&#34;\n&#34;);
+}
+
+// Funkcia na uvoľnenie pamäte zoznamu
+void freeList(Node* head) {
+    Node* current = head;
+    while (current != NULL) {
+        Node* temp = current;
+        current = current-&gt;next;
+        free(temp);
+    }
+}
+
+int main() {
+    Node* head = NULL; // Hlava zoznamu
+    int input;
+
+    while (1) {
+        printf(&#34;\nZadajte hodnotu prvku (-1 pre ukončenie): &#34;);
+        scanf(&#34;%d&#34;, &amp;input);
+
+        if (input == -1) {
+            break;
+        }
+
+        if (input &lt; 0) {
+            printf(&#34;Zadajte iba kladné čísla alebo -1 pre ukončenie.\n&#34;);
+            continue;
+        }
+
+        // Pridanie nového prvku do zoznamu
+        appendNode(&amp;head, input);
+
+        // Výpis aktuálneho zoznamu
+        printf(&#34;Aktuálny zoznam: &#34;);
+        printList(head);
+    }
+
+    // Uvoľnenie pamäte
+    freeList(head);
+    printf(&#34;Pamäť bola uvoľnená. Program ukončený.\n&#34;);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Štruktúra Node:<ul>
+<li>Reprezentuje uzol zoznamu, obsahuje hodnotu (value) a pointer na ďalší uzol (next).</li>
+</ul>
+</li>
+<li>Vytvorenie uzla:<ul>
+<li>Funkcia createNode alokuje pamäť pre nový uzol a inicializuje ho hodnotou.</li>
+</ul>
+</li>
+<li>Pripojenie uzla na koniec zoznamu:<ul>
+<li>Funkcia appendNode pridá nový uzol na koniec zoznamu.</li>
+<li>Ak je zoznam prázdny, nový uzol sa stane hlavou.</li>
+</ul>
+</li>
+<li>Výpis zoznamu:<ul>
+<li>Funkcia printList prechádza zoznam a vypisuje hodnoty jednotlivých uzlov.</li>
+</ul>
+</li>
+<li>Uvoľnenie pamäte:<ul>
+<li>Funkcia freeList prejde všetky uzly zoznamu a uvoľní ich pamäť.</li>
+</ul>
+</li>
+<li>Hlavný program:<ul>
+<li>Používateľ opakovane zadáva hodnoty, ktoré sa pridávajú do zoznamu.</li>
+<li>Po každom pridaní sa vypíše aktuálny stav zoznamu.</li>
+<li>Program končí, keď používateľ zadá -1.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
-    
+
   </google-codelab>
 
   <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>

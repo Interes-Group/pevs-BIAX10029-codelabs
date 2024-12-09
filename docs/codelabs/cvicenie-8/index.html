@@ -50,6 +50,76 @@
       <google-codelab-step label="Úloha 8.1" duration="0">
         <p>Napíšte program, zdrojový kód, v jazyku C použitím štandardu C11, ktorý vypýta na vstupe od používateľa číslo <code>int n</code> a následne alokuje pamäť <em>n</em> blokov každý o veľkosti typu <em>int</em>.</p>
 <p>Po alokácií program vypíše jednotlivé hodnoty čísle v alokovanej pamäti.</p>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int n;
+
+    // Požiadanie používateľa o zadanie čísla
+    printf(&#34;Enter the number of integers to allocate memory for: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    if (n &lt;= 0) {
+        printf(&#34;Invalid number of blocks.\n&#34;);
+        return 1;
+    }
+
+    // Dynamická alokácia pamäte pre n prvkov typu int
+    int *array = (int *)malloc(n * sizeof(int));
+    if (array == NULL) {
+        printf(&#34;Memory allocation failed.\n&#34;);
+        return 1;
+    }
+
+    // Inicializácia alokovanej pamäte a výpis hodnôt
+    printf(&#34;Allocated memory values:\n&#34;);
+    for (int i = 0; i &lt; n; i++) {
+        array[i] = i; // Inicializácia na 0 (voliteľné)
+        printf(&#34;Value at index %d: %d\n&#34;, i, array[i]);
+    }
+
+    // Uvoľnenie alokovanej pamäte
+    free(array);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Vstup od používateľa:<ul>
+<li>Používateľ zadá počet blokov pamäte, ktoré sa majú alokovať (n).</li>
+</ul>
+</li>
+<li>Dynamická alokácia pamäte:<ul>
+<li>malloc(n * sizeof(int)) alokuje pamäť pre n prvkov typu int.</li>
+<li>Funkcia malloc vráti pointer na začiatok alokovanej pamäte, alebo NULL, ak alokácia zlyhá.</li>
+</ul>
+</li>
+<li>Kontrola úspešnosti alokácie:<ul>
+<li>Ak malloc vráti NULL, program vypíše chybové hlásenie a ukončí sa.</li>
+</ul>
+</li>
+<li>Inicializácia a výpis:<ul>
+<li>Cyklus inicializuje hodnoty na 0 a vypisuje ich (hodnoty sú defaultne nešpecifikované, takže ich inicializácia je voliteľná).</li>
+</ul>
+</li>
+<li>Uvoľnenie pamäte:<ul>
+<li>free(array) uvoľní dynamicky alokovanú pamäť, aby sa predišlo úniku pamäte.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<p>Vstup: <code>Enter the number of integers to allocate memory for: 5</code></p>
+<p>Výstup:</p>
+<pre><code language="language-text" class="language-text">Allocated memory values:
+Value at index 0: 0
+Value at index 1: 0
+Value at index 2: 0
+Value at index 3: 0
+Value at index 4: 0
+</code></pre>
 
 
       </google-codelab-step>
@@ -64,6 +134,77 @@
 1. položka: adresa = 0x0000475d21b ; hodnota = 2
 2. položka: adresa = 0x0000475d21c ; hodnota = 3
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int n;
+
+    // Požiadanie používateľa o zadanie počtu prvkov
+    printf(&#34;Enter the number of integers to allocate memory for: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    if (n &lt;= 0) {
+        printf(&#34;Invalid number of blocks.\n&#34;);
+        return 1;
+    }
+
+    // Dynamická alokácia pamäte pre n prvkov typu int
+    int *array = (int *)malloc(n * sizeof(int));
+    if (array == NULL) {
+        printf(&#34;Memory allocation failed.\n&#34;);
+        return 1;
+    }
+
+    // Výpis adresy alokovanej pamäte
+    printf(&#34;Adresa alokovanej pamäte: %p\n&#34;, array);
+
+    // Zápis čísel od 1 do n do alokovanej pamäte
+    for (int i = 0; i &lt; n; i++) {
+        array[i] = i + 1; // Hodnoty od 1 do n
+    }
+
+    // Výpis jednotlivých hodnôt a ich adries
+    for (int i = 0; i &lt; n; i++) {
+        printf(&#34;%d. položka: adresa = %p ; hodnota = %d\n&#34;, i, &amp;array[i], array[i]);
+    }
+
+    // Uvoľnenie alokovanej pamäte
+    free(array);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Vstup od používateľa:<ul>
+<li>Používateľ zadá počet prvkov, pre ktoré sa má alokovať pamäť (n).</li>
+</ul>
+</li>
+<li>Dynamická alokácia pamäte:<ul>
+<li>malloc alokuje pamäť pre n prvkov typu int.</li>
+<li>Adresa alokovanej pamäte sa vypíše na začiatku.</li>
+</ul>
+</li>
+<li>Zápis hodnôt do pamäte:<ul>
+<li>Do každého prvku alokovaného poľa sa zapíše hodnota od 1 po n.</li>
+</ul>
+</li>
+<li>Výpis hodnôt a ich adries:<ul>
+<li>Iterácia cez alokovanú pamäť vypíše pre každý prvok: <ul>
+<li>Index.</li>
+<li>Adresu pamäte, kde sa hodnota nachádza.</li>
+<li>Hodnotu prvku.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Uvoľnenie pamäte:<ul>
+<li>Dynamicky alokovaná pamäť sa uvoľní pomocou free na konci programu.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -82,6 +223,73 @@ Adresa alokovanej pamäte: 0x000784b111
 1. položka: adresa = 0x000784b112 ; hodnota = 41
 2. položka: adresa = 0x000784b113 ; hodnota = -2
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int n;
+
+    // Požiadanie používateľa o počet prvkov
+    printf(&#34;Zadajte počet prvkov: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    if (n &lt;= 0) {
+        printf(&#34;Počet prvkov musí byť kladné číslo.\n&#34;);
+        return 1;
+    }
+
+    // Dynamická alokácia pamäte pre n prvkov typu int
+    int *array = (int *)malloc(n * sizeof(int));
+    if (array == NULL) {
+        printf(&#34;Nepodarilo sa alokovať pamäť.\n&#34;);
+        return 1;
+    }
+
+    // Zadanie hodnôt od používateľa
+    for (int i = 0; i &lt; n; i++) {
+        printf(&#34;Zadanie %d. prvok: &#34;, i + 1);
+        scanf(&#34;%d&#34;, &amp;array[i]);
+    }
+
+    // Výpis adresy alokovanej pamäte
+    printf(&#34;Adresa alokovanej pamäte: %p\n&#34;, array);
+
+    // Výpis hodnôt a ich adries
+    for (int i = 0; i &lt; n; i++) {
+        printf(&#34;%d. položka: adresa = %p ; hodnota = %d\n&#34;, i, &amp;array[i], array[i]);
+    }
+
+    // Uvoľnenie alokovanej pamäte
+    free(array);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Vstup od používateľa:<ul>
+<li>Používateľ zadá počet prvkov (n).</li>
+<li>Kontrola zabezpečí, že zadané číslo je kladné.</li>
+</ul>
+</li>
+<li>Dynamická alokácia pamäte:<ul>
+<li>Pomocou malloc sa alokuje pamäť pre n prvkov typu int.</li>
+</ul>
+</li>
+<li>Zadanie hodnôt:<ul>
+<li>Cyklus požaduje od používateľa hodnoty pre jednotlivé prvky dynamického poľa.</li>
+</ul>
+</li>
+<li>Výpis hodnôt a ich adries:<ul>
+<li>Pre každý prvok sa vypíše jeho index, adresa a hodnota.</li>
+</ul>
+</li>
+<li>Uvoľnenie pamäte:<ul>
+<li>Dynamicky alokovaná pamäť sa uvoľní pomocou free na konci programu.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -105,6 +313,93 @@ ahoj (4 znaky)
 programovanie (13 znakov)
 C (1 znak)
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    int n, maxLen;
+
+    // Načítanie počtu slov a maximálnej dĺžky slova od používateľa
+    printf(&#34;Zadajte počet slov: &#34;);
+    scanf(&#34;%d&#34;, &amp;n);
+
+    if (n &lt;= 0) {
+        printf(&#34;Počet slov musí byť kladné číslo.\n&#34;);
+        return 1;
+    }
+
+    printf(&#34;Zadajte maximálnu dĺžku slova: &#34;);
+    scanf(&#34;%d&#34;, &amp;maxLen);
+
+    if (maxLen &lt;= 0) {
+        printf(&#34;Maximálna dĺžka slova musí byť kladné číslo.\n&#34;);
+        return 1;
+    }
+
+    // Alokácia poľa pointerov na reťazce
+    char **words = (char **)malloc(n * sizeof(char *));
+    if (words == NULL) {
+        printf(&#34;Nepodarilo sa alokovať pamäť pre pole slov.\n&#34;);
+        return 1;
+    }
+
+    // Načítanie slov od používateľa
+    printf(&#34;Zadajte slová:\n&#34;);
+    for (int i = 0; i &lt; n; i++) {
+        // Alokácia pamäte pre jednotlivé slovo (s miestom pre &#39;\0&#39;)
+        words[i] = (char *)malloc((maxLen + 1) * sizeof(char));
+        if (words[i] == NULL) {
+            printf(&#34;Nepodarilo sa alokovať pamäť pre slovo %d.\n&#34;, i + 1);
+            return 1;
+        }
+
+        // Načítanie slova
+        printf(&#34;Slovo %d: &#34;, i + 1);
+        scanf(&#34;%s&#34;, words[i]);
+    }
+
+    // Výpis slov a ich dĺžok
+    printf(&#34;---\nSlová a ich dĺžky:\n&#34;);
+    for (int i = 0; i &lt; n; i++) {
+        printf(&#34;%s (%zu znakov)\n&#34;, words[i], strlen(words[i]));
+    }
+
+    // Uvoľnenie alokovanej pamäte
+    for (int i = 0; i &lt; n; i++) {
+        free(words[i]);
+    }
+    free(words);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Vstup od používateľa:<ul>
+<li>Používateľ zadáva počet slov (n) a maximálnu dĺžku slova (maxLen).</li>
+<li>Oba vstupy sú validované, aby boli kladné.</li>
+</ul>
+</li>
+<li>Dynamická alokácia:<ul>
+<li>Pole words je alokované pre n pointerov na reťazce.</li>
+<li>Pre každý reťazec v poli je alokovaná pamäť veľkosti maxLen + 1 (pre \0).</li>
+</ul>
+</li>
+<li>Načítanie slov:<ul>
+<li>Každé slovo je načítané pomocou scanf a uložené v alokovanej pamäti.</li>
+</ul>
+</li>
+<li>Výpis slov a ich dĺžok:<ul>
+<li>Funkcia strlen z knižnice &lt;string.h&gt; sa používa na získanie dĺžky reťazca.</li>
+</ul>
+</li>
+<li>Uvoľnenie pamäte:<ul>
+<li>Pre každé slovo sa pamäť uvoľní pomocou free, potom sa uvoľní pamäť pre pole pointerov.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -129,6 +424,92 @@ Zadané hodnoty: 10 20 30 40 50 60 70
 Konečná veľkosť poľa: 10 prvkov
 Adresa poľa: 0x000044781dcc
 </code></pre>
+<h2 is-upgraded>Riešenie</h2>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int initial_size = 5; // Počiatočná veľkosť poľa
+    int current_size = initial_size; // Aktuálna veľkosť poľa
+    int *array = (int *)malloc(current_size * sizeof(int)); // Alokácia pamäte
+    if (array == NULL) {
+        printf(&#34;Nepodarilo sa alokovať pamäť.\n&#34;);
+        return 1;
+    }
+
+    int input, count = 0;
+
+    printf(&#34;Zadajte hodnoty (zadaním -1 ukončíte):\n&#34;);
+    while (1) {
+        scanf(&#34;%d&#34;, &amp;input);
+        if (input == -1) {
+            break;
+        }
+
+        // Ak pole je plné, zväčšiť veľkosť na dvojnásobok
+        if (count == current_size) {
+            current_size *= 2;
+            int *temp = (int *)realloc(array, current_size * sizeof(int));
+            if (temp == NULL) {
+                printf(&#34;Nepodarilo sa zväčšiť pamäť.\n&#34;);
+                free(array); // Uvoľnenie pôvodnej pamäte
+                return 1;
+            }
+            array = temp;
+        }
+
+        // Uloženie hodnoty do poľa
+        array[count++] = input;
+    }
+
+    // Výpis načítaných hodnôt
+    printf(&#34;---\nZadané hodnoty: &#34;);
+    for (int i = 0; i &lt; count; i++) {
+        printf(&#34;%d &#34;, array[i]);
+    }
+    printf(&#34;\n&#34;);
+
+    // Výpis konečnej veľkosti poľa a adresy
+    printf(&#34;Konečná veľkosť poľa: %d prvkov\n&#34;, current_size);
+    printf(&#34;Adresa poľa: %p\n&#34;, array);
+
+    // Uvoľnenie pamäte
+    free(array);
+
+    return 0;
+}
+</code></pre>
+<h3 is-upgraded>Vysvetlenie</h3>
+<ol type="1">
+<li>Počiatočná veľkosť poľa:</li>
+</ol>
+<ul>
+<li>Pamäť je alokovaná na veľkosť 5 * sizeof(int).</li>
+</ul>
+<ol type="1" start="2">
+<li>Pridávanie hodnôt:<ul>
+<li>Používateľ zadáva čísla, ktoré sa ukladajú do poľa.</li>
+<li>Ak počet prvkov dosiahne aktuálnu veľkosť poľa, veľkosť sa zdvojnásobí pomocou funkcie realloc.</li>
+</ul>
+</li>
+<li>Zväčšenie pamäte:<ul>
+<li>realloc zmení veľkosť alokovanej pamäte na dvojnásobok. realloc je nákladná operácia a tak sa oplatí radšej alokovať dopredu väčšiu časť pamäte ako alokovať po jednom vstupe.</li>
+<li>Ak alokácia zlyhá, program vypíše chybu a uvoľní existujúcu pamäť.</li>
+</ul>
+</li>
+<li>Ukončenie zadávania:<ul>
+<li>Zadanie -1 ukončí zadávanie hodnôt.</li>
+</ul>
+</li>
+<li>Výpis výsledkov:<ul>
+<li>Všetky načítané hodnoty sú vypísané spolu s konečnou veľkosťou poľa a adresou.</li>
+</ul>
+</li>
+<li>Uvoľnenie pamäte:<ul>
+<li>Alokovaná pamäť je uvoľnená pomocou free.</li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -152,6 +533,66 @@ int main(){
 <li>Čo je zlé s funkciou <code>runMe</code>? (minimálne 2 veci)</li>
 <li>Prepíšte program tak aby bol korektný.</li>
 </ol>
+<h2 is-upgraded>Riešenie</h2>
+<h3 is-upgraded>Problémy s funkciou</h3>
+<ol type="1">
+<li>Únik pamäte:<ul>
+<li>Alokovaná pamäť pomocou malloc nie je uvoľnená pred ukončením funkcie. Tým sa stráca možnosť k nej pristúpiť, čo vedie k úniku pamäte.</li>
+</ul>
+</li>
+<li>Žiadna kontrola úspešnosti alokácie:<ul>
+<li>Funkcia malloc môže zlyhať a vrátiť NULL. Program toto nezohľadňuje, čo môže spôsobiť segfault alebo nepredvídateľné správanie, ak sa pamäť pokúsi použiť.</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Opravy</h3>
+<pre><code language="language-C" class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void runMe() {
+    // Alokácia pamäte
+    int* leakingPtr = (int*) malloc(sizeof(int) * 1024);
+    if (leakingPtr == NULL) {
+        printf(&#34;Nepodarilo sa alokovať pamäť.\n&#34;);
+        return;
+    }
+
+    // Naplnenie pamäte hodnotami
+    for (int i = 0; i &lt; 1024; i++) {
+        leakingPtr[i] = i + 1000;
+    }
+
+    // Použitie alokovaných hodnôt (napr. výpis prvých niekoľkých hodnôt)
+    for (int i = 0; i &lt; 5; i++) {
+        printf(&#34;Value at index %d: %d\n&#34;, i, leakingPtr[i]);
+    }
+
+    // Uvoľnenie pamäte
+    free(leakingPtr);
+}
+
+int main() {
+    runMe();
+    return 0;
+}
+</code></pre>
+<ol type="1">
+<li>Uvoľnenie pamäte:<ul>
+<li>Pridané volanie free(leakingPtr) pred ukončením funkcie runMe zabezpečí, že alokovaná pamäť nebude ponechaná na heap.</li>
+</ul>
+</li>
+<li>Kontrola úspešnosti malloc:<ul>
+<li>Pred použitím pointera leakingPtr sa kontroluje, či alokácia bola úspešná (leakingPtr != NULL).</li>
+</ul>
+</li>
+</ol>
+<h3 is-upgraded>Príklad výstupu</h3>
+<pre><code language="language-text" class="language-text">Value at index 0: 1000
+Value at index 1: 1001
+Value at index 2: 1002
+Value at index 3: 1003
+Value at index 4: 1004
+</code></pre>
 
 
       </google-codelab-step>
